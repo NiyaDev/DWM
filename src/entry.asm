@@ -34,15 +34,15 @@ Start:
 	ld sp,$DFFF
 
 	; TODO: Explore
-	call FUN_11DE
-	call FUN_1288
+	call int_off
+	call clear_memory
 	call copy_dma
 
-	; TODO: Explore
+	; Clear first $1C00 of VRAM
 	ld hl,_VRAM
 	ld bc,$1C00
 	xor a
-	call FUN_12C7
+	call mem_clear
 
 	; Set $C88A->$C88D to 0
 	ld hl,unk_start_1
@@ -258,7 +258,7 @@ Start:
 	ld a,[unk_start_26]
 	or a
 	call nz,FUN_3331
-	call FUN_11DE
+	call int_off
 	call FUN_1013
 
 	ld a,0
@@ -273,3 +273,8 @@ Start:
 ;; Functions
 include "src/bank0/FUN_030F.inc"
 include "src/bank0/FUN_036E.inc"
+
+include "src/bank0/int_off.inc"
+
+include "src/bank0/clear_memory.inc"
+include "src/bank0/mem_clear.inc"

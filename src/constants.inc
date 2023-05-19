@@ -46,6 +46,8 @@ def unk_start_15 equ $C88E
 ; Set to 0 with second group in init
 def unk_start_16 equ $C88F
 
+; Bit 7 reset along with rLCDC (OFF)
+def unk_11E7_1 equ $C8A1
 ; Set to 0 with second group in init
 ; Checked if bit 0 is 1 and is reset at end in FUN_036E
 def unk_start_20 equ $C8A2

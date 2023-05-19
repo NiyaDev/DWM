@@ -1,0 +1,118 @@
+
+SECTION "036E", ROM0[$036E]
+
+; 
+FUN_036E:
+	push af
+	push bc
+	push de
+	push hl
+
+	ld hl,unk_start_20
+	bit 0,[hl]
+	jp nz,.LAB_045C
+
+	set 0,[hl]
+
+	call _RUNDMA
+	call FUN_05AD
+	call FUN_124C
+	call FUN_122F
+	call FUN_056E
+	call FUN_1240
+
+	ld a,[unk_start_26]
+	or a
+	jr z,.LAB_039B
+
+	ld a,[unk_start_23]
+	or a
+	call z,FUN_3473
+
+.LAB_039B:
+	ei
+	
+	ld a,[unk_start_26]
+	or a
+	jr nz,.LAB_03B3
+
+	call FUN_12EE
+	call FUN_1364
+
+	ld hl,unk_start_23
+	inc [hl]
+	call FUN_3473
+
+	xor a
+	ld [unk_start_23],a
+
+.LAB_03B3:
+	call FUN_1BB1
+	call FUN_046B
+
+	ld a,[unk_start_26]
+	or a
+	jr nz,.LAB_03D9
+
+	ld a,[unk_start_9]
+	or a
+	call nz,FUN_0618
+
+	call FUN_17EC
+
+	ld a,[unk_start_21_low]
+	add 1
+	ld [unk_start_21_low],a
+	ld a,[unk_start_21_hig]
+	adc 0
+	ld [unk_start_21_hig],a
+
+.LAB_03D9:
+	ld a,[unk_036E_1]
+	and $0F
+	cp $0F
+	jr nz,.LAB_03E9
+
+	ld a,[unk_start_26]
+	or a
+	jp z,Start.LAB_015A
+
+.LAB_03E9:
+	ld a,[unk_start_26]
+	or a
+	jr nz,.LAB_044D
+
+	ld a,[unk_036E_1]
+	and $03
+	cp $03
+	jr .LAB_044D
+
+db $FA,$46,$C8,$CB,$57,$28,$20,$21,$AD,$C8,$FA,$8A,$C8,$22,$FA,$8B,$C8,$22,$FA,$8C,$C8,$22,$FA,$8D,$C8,$77,$3E,$07,$EA,$8A,$C8,$AF,$EA,$8B,$C8,$21,$8E,$C8,$34,$FA,$42,$C8,$CB,$5F,$28,$27,$FA,$46,$C8,$CB,$57,$28,$20,$21,$AD,$C8,$FA,$8A,$C8,$22,$FA,$8B,$C8,$22,$FA,$8C,$C8,$22,$FA,$8D,$C8,$77,$3E,$0C,$EA,$8A,$C8,$AF,$EA,$8B,$C8,$21,$8E,$C8,$34
+
+.LAB_044D:
+	ld hl,unk_start_20
+	res 0,[hl]
+.LAB_0452:
+	ldh a,[rLY]
+	ld [unk_036E_2],a
+
+	pop hl
+	pop de
+	pop bc
+	pop af
+
+	reti
+
+
+.LAB_045C:
+	call FUN_1240
+
+	ld a,[unk_start_23]
+	or a
+	jr nz,.LAB_0468
+
+	call FUN_3473
+
+.LAB_0468:
+	ei
+	jr .LAB_0452

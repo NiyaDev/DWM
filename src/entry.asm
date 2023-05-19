@@ -226,8 +226,8 @@ Start:
 	ld [unk_start_18],a
 	ld [unk_start_19],a
 	ld [unk_start_20],a
-	ld [unk_start_21],a
-	ld [unk_start_22],a
+	ld [unk_start_21_low],a
+	ld [unk_start_21_hig],a
 	ldh [unk_high_start_1],a
 	ld [unk_start_23],a
 	ld [unk_start_24],a
@@ -272,3 +272,4 @@ Start:
 
 ;; Functions
 include "src/bank0/FUN_030F.inc"
+include "src/bank0/FUN_036E.inc"

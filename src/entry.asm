@@ -1,8 +1,10 @@
 
+; Definitions
 include "src/includes/hardware.inc"
 include "src/constants.inc"
 include "src/todo.inc"
 
+; Home
 include "src/home/reset_vectors.inc"
 include "src/home/interrupts.inc"
 include "src/home/copy_dma.inc"
@@ -33,7 +35,6 @@ Start:
 	; Set stack
 	ld sp,$DFFF
 
-	; TODO: Explore
 	call int_off
 	call clear_memory
 	call copy_dma
@@ -77,13 +78,12 @@ Start:
 
 	; Setting some variables
 	ld a,1
-	ld [unk_start_3],a
+	ld [unk_wait],a
 	ld a,$FF
 	ld [unk_start_4_low],a
 	ld [unk_start_4_hig],a
 	
-	; TODO: Explore
-	call FUN_3331
+	call audio_init
 
 	xor a
 	ld [unk_start_5],a
@@ -93,117 +93,117 @@ Start:
 	or a
 	jr z,.LAB_01C6
 
-	; Clearing IO
+	; Clearing GBC IO
 	xor a
 	ldh [rVBK],a
 	ldh [rSVBK],a
 	ldh [rRP],a
 
 .LAB_01C6:
-	; TODO: Explore
-	; If returns 1, go through weird thing
+	; If return 1, go through weird thing
 	call FUN_1024
 	jr c,.LAB_01D2
 
 	xor a
-	ld [unk_start_3],a
+	ld [unk_wait],a
 	jp .LAB_028B
 
 
 .LAB_01D2:
-	ld bc,$000C
-	call FUN_10CF
+	; Wait ~.18 seconds
+	ld bc,12
+	call wait
 
 	ld a,$14
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
-	call FUN_1013
+	call wait_7000
 
 	ld a,2
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
-	call FUN_1013
+	call wait_7000
 
 	ld a,3
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
-	call FUN_1013
+	call wait_7000
 
 	ld a,4
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
-	call FUN_1013
+	call wait_7000
 
 	ld a,5
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
-	call FUN_1013
+	call wait_7000
 
 	ld a,6
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
-	call FUN_1013
+	call wait_7000
 
 	ld a,7
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
-	call FUN_1013
+	call wait_7000
 
 	ld a,8
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
-	call FUN_1013
+	call wait_7000
 
 	ld a,9
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
-	call FUN_1013
+	call wait_7000
 
 	ld a,$0C
 	ld de,$0803
 	ld bc,$0800
 	call FUN_113E
-	call FUN_1013
+	call wait_7000
 
 	ld a,$0D
 	ld de,$0804
 	call FUN_10E5
-	call FUN_1013
+	call wait_7000
 
 	ld a,$12
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
-	call FUN_1013
+	call wait_7000
 
 	ld a,$0A
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
-	call FUN_1013
+	call wait_7000
 
 	ld a,$13
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
-	call FUN_1013
+	call wait_7000
 
 	ld a,1
-	ld [unk_start_3],a
+	ld [unk_wait],a
 	ld a,$FF
 	ld [unk_start_6],a
 
 .LAB_028B:
-	call FUN_12A5
+	call clear_vram
 	call FUN_1417
 	call FUN_13EF
 	call FUN_140B
@@ -257,24 +257,42 @@ Start:
 	di
 	ld a,[unk_start_26]
 	or a
-	call nz,FUN_3331
+	call nz,audio_init
 	call int_off
-	call FUN_1013
+	call wait_7000
 
 	ld a,0
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
-	call FUN_1013
+	call wait_7000
 
 	jp .LAB_028B
 
 
 ;; Functions
-include "src/bank0/FUN_030F.inc"
-include "src/bank0/FUN_036E.inc"
+include "src/bank0/FUN_030F.inc" ; 030F
+include "src/bank0/FUN_036E.inc" ; 036E
 
-include "src/bank0/int_off.inc"
+include "src/bank0/wait_7000.inc" ; 1013
+include "src/bank0/FUN_1024.inc" ; 1024
+;include "src/bank0/FUN_1082.inc" ; 1082
+include "src/bank0/wait.inc" ; 10CF
 
-include "src/bank0/clear_memory.inc"
-include "src/bank0/mem_clear.inc"
+include "src/bank0/int_off.inc" ; 11DE
+
+include "src/bank0/clear_memory.inc" ; 1288
+include "src/bank0/clear_vram.inc" ; 12A5
+include "src/bank0/mem_clear.inc" ; 12C7
+include "src/bank0/FUN_12D0.inc" ; 12D0
+
+include "src/bank0/FUN_13EF.inc" ; 13EF
+
+include "src/bank0/FUN_140B.inc" ; 140B
+include "src/bank0/FUN_1417.inc" ; 1417
+
+include "src/bank0/FUN_1660.inc" ; 1660
+
+include "src/bank0/audio_init.inc" ; 3331
+db $AF,$EA,$29,$DE,$C9,$3E,$04,$EA,$29,$DE,$AF,$EA,$1D,$DE,$C9 ; TODO: This is a function
+include "src/bank0/FUN_336D.inc" ; 336D

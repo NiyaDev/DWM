@@ -10,10 +10,10 @@ FUN_1024:
 	rst $10
 	call wait_7000
 
-	; Check if either left+right or B+A are pressed
+	; If the current player is not #1, return true
 	ldh a,[rP1]
-	and P1F_1 | P1F_0
-	cp P1F_1 | P1F_0
+	and 3
+	cp 3
 	jr nz,.ret_true
 
 	ld a,P1F_GET_DPAD

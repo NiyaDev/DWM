@@ -3,7 +3,8 @@ SECTION "1024", ROM0[$1024]
 
 ; 
 FUN_1024:
-	ld a,$0B
+	; SGB Request: 2-Players
+	ld a,11
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
@@ -42,7 +43,8 @@ FUN_1024:
 	cp P1F_1 | P1F_0
 	jr nz,.ret_true
 
-	ld a,$0A
+	; SGB Request: 1-Player
+	ld a,10
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
@@ -53,6 +55,7 @@ FUN_1024:
 	ret
 
 .ret_true:
+	; SGB Request: 1-Player
 	ld a,$0A
 	ld [unk_start_7],a
 	ld hl,$0800

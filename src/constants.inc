@@ -6,7 +6,12 @@ def unk_start_19 equ $C741
 
 ; Set to various numbers in the weird section
 ; Set to $0B or $0A in FUN_1024
+; Used in FUN_8_4015
+; SGB command offset
 def unk_start_7 equ $C774
+
+; ANDed with 7 and leaves function if result is 0
+def unk_8_4015_1 equ $C777
 
 ; Set to $FF at init
 def unk_start_6 equ $C81B

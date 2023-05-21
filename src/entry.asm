@@ -114,84 +114,98 @@ Start:
 	ld bc,12
 	call wait
 
-	ld a,$14
+	; SGB Request: Mask with black screen
+	ld a,20
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
 	call wait_7000
 
+	; SGB Request: Sends data 1
 	ld a,2
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
 	call wait_7000
 
+	; SGB Request: Sends data 2
 	ld a,3
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
 	call wait_7000
 
+	; SGB Request: Sends data 3
 	ld a,4
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
 	call wait_7000
 
+	; SGB Request: Sends data 4
 	ld a,5
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
 	call wait_7000
 
+	; SGB Request: Sends data 5
 	ld a,6
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
 	call wait_7000
 
+	; SGB Request: Sends data 6
 	ld a,7
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
 	call wait_7000
 
+	; SGB Request: Sends data 7
 	ld a,8
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
 	call wait_7000
 
+	; SGB Request: Sends data 8
 	ld a,9
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
 	call wait_7000
 
-	ld a,$0C
+	; TODO: Explore
+	ld a,12
 	ld de,$0803
 	ld bc,$0800
 	call FUN_113E
 	call wait_7000
 
-	ld a,$0D
+	; TODO: Explore
+	ld a,13
 	ld de,$0804
 	call FUN_10E5
 	call wait_7000
 
-	ld a,$12
+	; SGB Request: Sets palette Priority to software
+	ld a,18
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
 	call wait_7000
 
-	ld a,$0A
+	; SGB Request: 1-Player
+	ld a,10
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
 	call wait_7000
 
-	ld a,$13
+	; SGB Request: Disable built in Palettes
+	ld a,19
 	ld [unk_start_7],a
 	ld hl,$0800
 	rst $10
@@ -199,6 +213,7 @@ Start:
 
 	ld a,1
 	ld [unk_wait],a
+
 	ld a,$FF
 	ld [unk_start_6],a
 
@@ -261,6 +276,7 @@ Start:
 	call int_off
 	call wait_7000
 
+	; SGB Request: Cancel mask
 	ld a,0
 	ld [unk_start_7],a
 	ld hl,$0800
@@ -271,6 +287,7 @@ Start:
 
 
 ;; Functions
+;; BANK0
 include "src/bank0/FUN_030F.inc" ; 030F
 include "src/bank0/FUN_036E.inc" ; 036E
 
@@ -296,3 +313,9 @@ include "src/bank0/FUN_1660.inc" ; 1660
 include "src/bank0/audio_init.inc" ; 3331
 db $AF,$EA,$29,$DE,$C9,$3E,$04,$EA,$29,$DE,$AF,$EA,$1D,$DE,$C9 ; TODO: This is a function
 include "src/bank0/FUN_336D.inc" ; 336D
+
+;; BANK8
+SECTION "BANK8", ROMX[$4000], BANK[8]
+db 8
+dw sgb_commands, FUN_8_41E3, FUN_8_422C, FUN_8_447E, FUN_8_449E, FUN_8_44A5, FUN_8_54A5, FUN_8_64A5, FUN_8_68DD, FUN_8_78DD
+include "src/bank8/FUN_8_4015.inc"

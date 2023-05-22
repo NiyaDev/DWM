@@ -1,7 +1,8 @@
 
 SECTION "1024", ROM0[$1024]
 
-; 
+; Changes SGB to 2-player mode, looks at rP1, then returns to 1-player mode.
+; This is probably a really goofy way of seeing if the game is being run on a SGB.
 FUN_1024:
 	; SGB Request: 2-Players
 	ld a,11
@@ -12,17 +13,17 @@ FUN_1024:
 
 	; If the current player is not #1, return true
 	ldh a,[rP1]
-	and 3
-	cp 3
+	and SGB_PLAYER1
+	cp SGB_PLAYER1
 	jr nz,.ret_true
 
-	ld a,P1F_GET_DPAD
+	ld a,SGB_HIG
 	ldh [rP1],a
 	ldh a,[rP1]
 	ldh a,[rP1]
-	ld a,P1F_GET_NONE
+	ld a,SGB_END
 	ldh [rP1],a
-	ld a,P1F_GET_BTN
+	ld a,SGB_LOW
 	ldh [rP1],a
 	ldh a,[rP1]
 	ldh a,[rP1]
@@ -30,7 +31,7 @@ FUN_1024:
 	ldh a,[rP1]
 	ldh a,[rP1]
 	ldh a,[rP1]
-	ld a,P1F_GET_NONE
+	ld a,SGB_END
 	ldh [rP1],a
 	ldh a,[rP1]
 	ldh a,[rP1]
@@ -38,9 +39,9 @@ FUN_1024:
 	ldh a,[rP1]
 
 
-	; Check if either left+right or B+A are pressed
-	and P1F_1 | P1F_0
-	cp P1F_1 | P1F_0
+	;  If the current player is not #1, return true
+	and SGB_PLAYER1
+	cp SGB_PLAYER1
 	jr nz,.ret_true
 
 	; SGB Request: 1-Player

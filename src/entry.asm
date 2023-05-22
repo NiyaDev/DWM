@@ -100,16 +100,16 @@ Start:
 	ldh [rRP],a
 
 .LAB_01C6:
-	; If return 1, go through weird thing
+	; If return 1, go through SGB commands
 	call FUN_1024
-	jr c,.LAB_01D2
+	jr c,.sgb_commands
 
 	xor a
 	ld [unk_wait],a
 	jp .LAB_028B
 
 
-.LAB_01D2:
+.sgb_commands:
 	; Wait ~.18 seconds
 	ld bc,12
 	call wait
@@ -184,7 +184,6 @@ Start:
 	call FUN_113E
 	call wait_7000
 
-	; TODO: Explore
 	ld a,13
 	ld de,$0804
 	call FUN_10E5
@@ -295,6 +294,7 @@ include "src/bank0/wait_7000.inc" ; 1013
 include "src/bank0/FUN_1024.inc" ; 1024
 ;include "src/bank0/FUN_1082.inc" ; 1082
 include "src/bank0/wait.inc" ; 10CF
+include "src/bank0/FUN_10E5.inc" ; 10E5
 
 include "src/bank0/int_off.inc" ; 11DE
 
@@ -307,6 +307,9 @@ include "src/bank0/FUN_13EF.inc" ; 13EF
 
 include "src/bank0/FUN_140B.inc" ; 140B
 include "src/bank0/FUN_1417.inc" ; 1417
+
+include "src/bank0/FUN_14CF.inc" ; 14CF
+include "src/bank0/FUN_14E1.inc" ; 14E1
 
 include "src/bank0/FUN_1660.inc" ; 1660
 

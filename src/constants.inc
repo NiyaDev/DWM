@@ -88,6 +88,7 @@ def unk_13EF_5 equ $C89F
 ; Set to $E2
 def unk_13EF_6 equ $C8A0
 ; Bit 7 reset along with rLCDC (OFF)
+; Set to the same as rLCDC in FUN_10E5
 def unk_11E7_1 equ $C8A1
 ; Set to 0 with second group in init
 ; Checked if bit 0 is 1 and is reset at end in FUN_036E
@@ -122,6 +123,7 @@ def unk_start_2 equ $C8EE
 
 
 ; Set to 0 with second group in init
+; Causes lock up if not 0, inc, then saved in FUN_14CF
 def unk_start_24 equ $DA78
 
 ; Set to 0

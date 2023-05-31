@@ -7,7 +7,7 @@ clear_vram:
 	ld hl,$9800
 	ld bc,$0800
 	xor a
-	call mem_clear
+	call mem_fill
 
 	; Check if GB
 	ld a,[IsGBC]
@@ -21,7 +21,7 @@ clear_vram:
 	ld hl,$9800
 	ld bc,$800
 	xor a
-	call mem_clear
+	call mem_fill
 	; Return to VRAM bank 0
 	ld a,0
 	ldh [rVBK],a

@@ -7,15 +7,15 @@ FUN_1627:
 	ld [rROMB0],a
 	swap a
 	rra
-	and 0x03
+	and $03
 	ld	[rRAMB],a
 
 	push hl
-	; hl = 0x4001 + (e * 2)
+	; hl = $4001 + (e * 2)
 	ld l,e
-	ld h,0x00
+	ld h,$00
 	add hl,hl
-	ld de,0x4001
+	ld de,$4001
 	add hl,de
 	; de = [hl]
 	ld e,[hl]
@@ -32,28 +32,28 @@ FUN_1627:
 	
 	inc de
 	ld a,[de]
-	; 0xFFAB = [de]
-	ldh [0xFFAB],a
+	; $FFAB = [de]
+	ldh [$FFAB],a
 	inc de
-	; 0xFFAC = l
+	; $FFAC = l
 	ld a,l
-	ldh [0xFFAC],a
-	; 0xFFAD = h
+	ldh [$FFAC],a
+	; $FFAD = h
 	ld a,h
-	ldh [0xFFAD],a
+	ldh [$FFAD],a
 	push hl
 	; hl += bc
 	add hl,bc
-	; 0xFFB1 = l
+	; $FFB1 = l
 	ld a,l
-	ldh [0xFFB1],a
-	; 0xFFB2 = h
+	ldh [$FFB1],a
+	; $FFB2 = h
 	ld a,h
-	ldh [0xFFB2],a
+	ldh [$FFB2],a
 	pop hl
-	; 0xFFB3 = hl
+	; $FFB3 = hl
 	ld a,l
-	ldh [0xFFB3],a
+	ldh [$FFB3],a
 	ld a,h
-	ldh [0xFFB4],a
+	ldh [$FFB4],a
 	ret

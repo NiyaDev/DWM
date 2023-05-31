@@ -3,7 +3,7 @@ SECTION "12C7", ROM0[$12C7]
 
 ; HL - dest, BC - count, A - fill
 ; Fills the alloted amount of memory at destination with fill.
-mem_clear:
+mem_fill:
 	ld d,a
 
 .loop:

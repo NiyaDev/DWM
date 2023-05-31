@@ -10,13 +10,13 @@ clear_memory:
 	ld hl,$C000
 	ld bc,$1E00
 	xor a
-	call mem_clear
+	call mem_fill
 
 	; Clear $FF8A->$FFFE
 	ld hl,$FF8A
 	ld bc,$0074
 	xor a
-	call mem_clear
+	call mem_fill
 
 	pop af
 	ld [IsGBC],a

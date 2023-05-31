@@ -5,7 +5,8 @@ SECTION "10E5", ROM0[$10E5]
 FUN_10E5:
 	ld [unk_start_7],a
 
-	ld a,[unk_wait]
+	; skip if waiting off
+	ld a,[doWait]
 	or a
 	ret z
 
@@ -23,7 +24,7 @@ FUN_10E5:
 	ld hl,$8800
 	ld bc,$1000
 	xor a
-	call mem_clear
+	call mem_fill
 	pop de
 
 	ld a,$E4

@@ -8,6 +8,6 @@ FUN_1417:
 
 	ld hl,$C000
 	ld bc,$00A0
-	call mem_clear
+	call mem_fill
 
 	ret

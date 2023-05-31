@@ -3,7 +3,7 @@ SECTION "1024", ROM0[$1024]
 
 ; Changes SGB to 2-player mode, looks at rP1, then returns to 1-player mode.
 ; This is probably a really goofy way of seeing if the game is being run on a SGB.
-FUN_1024:
+check_sgb:
 	; SGB Request: 2-Players
 	ld a,11
 	ld [unk_start_7],a

@@ -68,7 +68,6 @@ DEF rROMB0       EQU $2100 ; $2000->$2fff
 DEF rROMB1       EQU $3100 ; $3000->$3fff - If more than 256 ROM banks are present.
 DEF rRAMB        EQU $4100 ; $4000->$5fff - Bit 3 enables rumble (if present)
 DEF rRAMB_ex     EQU $4000
-def rBANKSEL     equ $6100 ; Possibly? It's not written on MBC5, but there are loads to this location so idk.
 
 
 ;***************************************************************************

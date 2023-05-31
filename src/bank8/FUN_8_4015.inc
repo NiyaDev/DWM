@@ -3,7 +3,7 @@ SECTION "4015", ROMX[$4015], BANK[8]
 
 ; Sends commands to SGB
 sgb_commands:
-	ld a,[unk_wait]
+	ld a,[doWait]
 	or a
 	ret z
 

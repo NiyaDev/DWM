@@ -43,7 +43,7 @@ Start:
 	ld hl,_VRAM
 	ld bc,$1C00
 	xor a
-	call mem_clear
+	call mem_fill
 
 	; Set $C88A->$C88D to 0
 	ld hl,unk_start_1
@@ -58,27 +58,30 @@ Start:
 	ld a,0
 	ld [unk_start_1],a
 	
-	; Setting SRAM bank to 0 and enabling writing
+	; Writing to $6100 for some reason
 	ld a,1
-	ld [0x6100],a
+	ld [$6100],a
 	ld a,0
 	ld [rRAMB],a
 	ld a,0
-	ld [0x6100],a
+	ld [$6100],a
 	ld a,0
 	ld [rRAMB],a
+
+	; Enable reading and writing to SRAM
 	ld a,$0A
 	ld [rRAMG],a
 
-	; Setting ROM and SRAM banks to 1 and 0
+	; Set ROM bank to 1
 	ld a,1
 	ld [rROMB0],a
+	; Set SRAM bank to 0
 	ld a,0
 	ld [rRAMB],a
 
 	; Setting some variables
 	ld a,1
-	ld [unk_wait],a
+	ld [doWait],a
 	ld a,$FF
 	ld [unk_start_4_low],a
 	ld [unk_start_4_hig],a
@@ -91,7 +94,7 @@ Start:
 	; If IsGBC == false, skip
 	ld a,[IsGBC]
 	or a
-	jr z,.LAB_01C6
+	jr z,.check_for_sgb
 
 	; Clearing GBC IO
 	xor a
@@ -99,13 +102,13 @@ Start:
 	ldh [rSVBK],a
 	ldh [rRP],a
 
-.LAB_01C6:
-	; If return 1, go through SGB commands
-	call FUN_1024
+.check_for_sgb:
+	; If returns true, go through SGB commands
+	call check_sgb
 	jr c,.sgb_commands
 
 	xor a
-	ld [unk_wait],a
+	ld [doWait],a
 	jp .LAB_028B
 
 
@@ -211,7 +214,7 @@ Start:
 	call wait_7000
 
 	ld a,1
-	ld [unk_wait],a
+	ld [doWait],a
 
 	ld a,$FF
 	ld [unk_start_6],a
@@ -291,7 +294,7 @@ include "src/bank0/FUN_030F.inc" ; 030F
 include "src/bank0/FUN_036E.inc" ; 036E
 
 include "src/bank0/wait_7000.inc" ; 1013
-include "src/bank0/FUN_1024.inc" ; 1024
+include "src/bank0/check_sgb.inc" ; 1024
 ;include "src/bank0/FUN_1082.inc" ; 1082
 include "src/bank0/wait.inc" ; 10CF
 include "src/bank0/FUN_10E5.inc" ; 10E5
@@ -300,7 +303,7 @@ include "src/bank0/int_off.inc" ; 11DE
 
 include "src/bank0/clear_memory.inc" ; 1288
 include "src/bank0/clear_vram.inc" ; 12A5
-include "src/bank0/mem_clear.inc" ; 12C7
+include "src/bank0/mem_fill.inc" ; 12C7
 include "src/bank0/FUN_12D0.inc" ; 12D0
 
 include "src/bank0/FUN_13EF.inc" ; 13EF
@@ -310,6 +313,8 @@ include "src/bank0/FUN_1417.inc" ; 1417
 
 include "src/bank0/FUN_14CF.inc" ; 14CF
 include "src/bank0/FUN_14E1.inc" ; 14E1
+
+include "src/bank0/FUN_1627.inc" ; 1627
 
 include "src/bank0/FUN_1660.inc" ; 1660
 

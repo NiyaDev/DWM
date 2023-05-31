@@ -5,7 +5,7 @@ def unk_start_18 equ $C740
 def unk_start_19 equ $C741
 
 ; Set to various numbers in the weird section
-; Set to $0B or $0A in FUN_1024
+; Set to $0B or $0A in check_sgb
 ; Used in FUN_8_4015
 ; SGB command offset
 def unk_start_7 equ $C774
@@ -17,7 +17,7 @@ def unk_8_4015_1 equ $C777
 def unk_start_6 equ $C81B
 ; Set to 1 at init in multiple places
 ; If 0, will skip waits
-def unk_wait equ $C81C
+def doWait equ $C81C
 def IsGBC equ $C81D
 
 ; Set to 0 with others in init

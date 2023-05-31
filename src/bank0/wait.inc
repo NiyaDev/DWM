@@ -4,7 +4,7 @@ SECTION "10CF", ROM0[$10CF]
 ; Wait for 63,000 cycles input times
 ; Each run is ~.015 seconds each
 wait:
-	ld a,[unk_wait]
+	ld a,[doWait]
 	or a
 	ret z
 

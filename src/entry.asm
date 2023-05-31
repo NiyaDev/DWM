@@ -60,11 +60,11 @@ Start:
 	
 	; Setting SRAM bank to 0 and enabling writing
 	ld a,1
-	ld [rBANKSEL],a
+	ld [0x6100],a
 	ld a,0
 	ld [rRAMB],a
 	ld a,0
-	ld [rBANKSEL],a
+	ld [0x6100],a
 	ld a,0
 	ld [rRAMB],a
 	ld a,$0A

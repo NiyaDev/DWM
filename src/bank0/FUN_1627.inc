@@ -33,27 +33,27 @@ FUN_1627:
 	inc de
 	ld a,[de]
 	; $FFAB = [de]
-	ldh [$FFAB],a
+	ldh [unk_14E1_1],a
 	inc de
 	; $FFAC = l
 	ld a,l
-	ldh [$FFAC],a
+	ldh [unk_14E1_4],a
 	; $FFAD = h
 	ld a,h
-	ldh [$FFAD],a
+	ldh [unk_14E1_5],a
 	push hl
 	; hl += bc
 	add hl,bc
 	; $FFB1 = l
 	ld a,l
-	ldh [$FFB1],a
+	ldh [unk_14E1_7],a
 	; $FFB2 = h
 	ld a,h
-	ldh [$FFB2],a
+	ldh [unk_14E1_6],a
 	pop hl
 	; $FFB3 = hl
 	ld a,l
-	ldh [$FFB3],a
+	ldh [unk_14E1_9],a
 	ld a,h
-	ldh [$FFB4],a
+	ldh [unk_14E1_8],a
 	ret

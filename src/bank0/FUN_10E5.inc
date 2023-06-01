@@ -1,7 +1,7 @@
 
 SECTION "10E5", ROM0[$10E5]
 
-; 
+; Clears the sprite data copied using FUN_113E
 FUN_10E5:
 	ld [unk_start_7],a
 
@@ -14,30 +14,30 @@ FUN_10E5:
 	call lcd_off
 	call FUN_140B
 
-	; Reset X/Y scrolling
+	; Clears scrolling
 	xor a
 	ldh [rSCX],a
 	ldh [rSCY],a
 
-	; Clearing VRAM
+	; Clearing VRAM Tile block 1
 	push de
-	ld hl,$8800
+	ld hl,_VRAM8800
 	ld bc,$1000
 	xor a
 	call mem_fill
 	pop de
 
-	ld a,$E4
+	; Sets palette to default intensity
+	ld a,%11100100
 	ldh [rBGP],a
 
-	; TODO: Explore
+	; 
 	ld hl,$8800
 	call FUN_14CF
 
-	; Sets VRAM to values starting with $80 in chunks of 20 seperated by 12
-	; 260 times incrementing A each time
-	ld hl,$9800
-	ld de,$000C
+	; Sets the tilemap data to incremental tiles
+	ld hl,_SCRN0
+	ld de,12
 	ld a,$80
 	ld c,13
 .outer_loop:
@@ -57,15 +57,15 @@ FUN_10E5:
 	ldh [rLCDC],a
 	ld [unk_11E7_1],a
 
-	; SGB Request based on input A
+	; Wait and send SGB command
 	ld bc,5
 	call wait
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
+
+	; Wait then turn off LCD
 	ld bc,6
 	call wait
-
-	; Turn LCD back off
 	call lcd_off
 
 	ret

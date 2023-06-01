@@ -8,9 +8,9 @@ wait:
 	or a
 	ret z
 
-.LAB_10D4:
+.outer_loop:
 	ld de,$06D6
-.LAB_10D7:
+.inner_loop:
 	nop
 	nop
 	nop
@@ -18,11 +18,11 @@ wait:
 	dec	de
 	ld a,d
 	or e
-	jr nz,.LAB_10D7
+	jr nz,.inner_loop
 
 	dec bc
 	ld a,b
 	or c
-	jr nz,.LAB_10D4
+	jr nz,.outer_loop
 
 	ret

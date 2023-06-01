@@ -7,7 +7,7 @@ int_off:
 	ldh [rIF],a
 
 	ldh a,[rIE]
-	and $E2
+	and IEF_UNUSED | IEF_STAT
 	ldh [rIE],a
 
 ; Waits until VBlank and turns of LCD
@@ -20,7 +20,7 @@ lcd_off:
 .loop:
 	; Loop until the VBlank
 	ldh a,[rLY]
-	cp $91
+	cp 145
 	jr nz,.loop
 
 	; Turn off LCD

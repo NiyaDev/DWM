@@ -8,7 +8,19 @@ include "src/todo.inc"
 include "src/home/reset_vectors.inc"
 include "src/home/interrupts.inc"
 include "src/home/copy_dma.inc"
-db $13,$cd,$90,$12,$cd,$00,$40,$cd,$ba,$17,$af,$ea,$84,$c9,$e1,$d1,$c1,$f1,$d9,$cd,$c2,$00,$af,$e0,$0f,$fa,$99,$c9,$e0,$ff,$fb,$cd,$ed,$04,$e1,$d1,$c1,$f1,$cd,$a7,$04,$d9,$21,$91,$c9,$2a,$e0,$42,$2a,$e0,$43,$2a,$e0,$4a,$2a,$e0,$4b,$2a,$e0,$47,$2a,$e0,$48,$2a,$e0,$49,$7e,$e0,$45,$fa,$c1,$dd,$ea,$c0,$dd,$fa,$90,$c9,$e0,$40,$fa,$c7,$dd,$b7,$c8,$c3,$14,$12,$ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff
+db $13,$cd,$90,$12,$cd,$00,$40,$cd
+db $ba,$17,$af,$ea,$84,$c9,$e1,$d1
+db $c1,$f1,$d9,$cd,$c2,$00,$af,$e0
+db $0f,$fa,$99,$c9,$e0,$ff,$fb,$cd
+db $ed,$04,$e1,$d1,$c1,$f1,$cd,$a7
+db $04,$d9,$21,$91,$c9,$2a,$e0,$42
+db $2a,$e0,$43,$2a,$e0,$4a,$2a,$e0
+db $4b,$2a,$e0,$47,$2a,$e0,$48,$2a
+db $e0,$49,$7e,$e0,$45,$fa,$c1,$dd
+db $ea,$c0,$dd,$fa,$90,$c9,$e0,$40
+db $fa,$c7,$dd,$b7,$c8,$c3,$14,$12
+db $ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff
+db $ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff
 
 
 SECTION "Entry", ROM0[$0100]
@@ -118,98 +130,98 @@ Start:
 	call wait
 
 	; SGB Request: Mask with black screen
-	ld a,20
+	ld a,sgb_command_maskblack
 	ld [unk_start_7],a
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 1
-	ld a,2
+	ld a,sgb_command_data1
 	ld [unk_start_7],a
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 2
-	ld a,3
+	ld a,sgb_command_data2
 	ld [unk_start_7],a
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 3
-	ld a,4
+	ld a,sgb_command_data3
 	ld [unk_start_7],a
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 4
-	ld a,5
+	ld a,sgb_command_data4
 	ld [unk_start_7],a
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 5
-	ld a,6
+	ld a,sgb_command_data5
 	ld [unk_start_7],a
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 6
-	ld a,7
+	ld a,sgb_command_data6
 	ld [unk_start_7],a
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 7
-	ld a,8
+	ld a,sgb_command_data7
 	ld [unk_start_7],a
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 8
-	ld a,9
+	ld a,sgb_command_data8
 	ld [unk_start_7],a
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
-	; TODO: Explore
-	ld a,12
-	ld de,$0803
-	ld bc,$0800
+	; 
+	ld a,sgb_command_paltrn
+	ld de,jump_8_447E
+	ld bc,2048
 	call FUN_113E
 	call wait_7000
 
-	ld a,13
-	ld de,$0804
+	ld a,sgb_command_attrtrn
+	ld de,jump_8_449E
 	call FUN_10E5
 	call wait_7000
 
 	; SGB Request: Sets palette Priority to software
-	ld a,18
+	ld a,sgb_command_palpri
 	ld [unk_start_7],a
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: 1-Player
-	ld a,10
+	ld a,sgb_command_multione
 	ld [unk_start_7],a
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Disable built in Palettes
-	ld a,19
+	ld a,sgb_command_iconenable
 	ld [unk_start_7],a
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
@@ -279,9 +291,9 @@ Start:
 	call wait_7000
 
 	; SGB Request: Cancel mask
-	ld a,0
+	ld a,sgb_command_maskcancel
 	ld [unk_start_7],a
-	ld hl,$0800
+	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
@@ -298,6 +310,8 @@ include "src/bank0/check_sgb.inc" ; 1024
 ;include "src/bank0/FUN_1082.inc" ; 1082
 include "src/bank0/wait.inc" ; 10CF
 include "src/bank0/FUN_10E5.inc" ; 10E5
+
+include "src/bank0/FUN_113E.inc" ; 113E 
 
 include "src/bank0/int_off.inc" ; 11DE
 
@@ -319,14 +333,13 @@ include "src/bank0/FUN_1627.inc" ; 1627
 include "src/bank0/FUN_1660.inc" ; 1660
 
 include "src/bank0/audio_init.inc" ; 3331
-db $AF,$EA,$29,$DE,$C9,$3E,$04,$EA,$29,$DE,$AF,$EA,$1D,$DE,$C9 ; TODO: This is a function
+db $AF,$EA,$29,$DE,$C9,$3E,$04,$EA
+db $29,$DE,$AF,$EA,$1D,$DE,$C9 ; TODO: This is a function
 include "src/bank0/FUN_336D.inc" ; 336D
 
-;; BANK8
-SECTION "BANK8", ROMX[$4000], BANK[8]
-db 8
-dw sgb_commands, FUN_8_41E3, FUN_8_422C, FUN_8_447E, FUN_8_449E, FUN_8_44A5, FUN_8_54A5, FUN_8_64A5, FUN_8_68DD, FUN_8_78DD
-include "src/bank8/FUN_8_4015.inc"
+;; BANK 8
+include "src/bank8/jump_table.inc"
+include "src/bank8/sgb_commands.inc"
 
 ;; BANK123
 SECTION "BANK123", ROMX[$4000], BANK[123]

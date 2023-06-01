@@ -150,6 +150,20 @@ def unk_start_14 equ $DF0E
 
 ;; HIRAM
 
+def unk_14E1_1 equ $FFAB
+def unk_14E1_4 equ $FFAC
+def unk_14E1_5 equ $FFAD
+
+def unk_14E1_3 equ $FFAF
+
+def unk_14E1_2 equ $FFB0
+def unk_14E1_7 equ $FFB1
+def unk_14E1_6 equ $FFB2
+def unk_14E1_9 equ $FFB3
+def unk_14E1_8 equ $FFB4
+
+def unk_140B equ $FFB7
+
 ; Set to 0
 def unk_high_1417 equ $CB
 ;

@@ -14,66 +14,66 @@ dw .jump10,.jump11,.jump12
 dw .jump13
 
 .jump01:
-	ld hl,$1500
+	ld hl,jump_21_4009
 	rst $10
 	ret
 
 .jump02:
-	ld hl,$0100
+	ld hl,jump_1_401D
 	rst $10
 	ret
 
 .jump03:
-	ld hl,$5000
+	ld hl,jump_80_5DC9
 	rst $10
 	ret
 
 .jump04:
-	ld hl,$0201
+	ld hl,jump_2_4E9F
 	rst $10
 	ret
 
 .jump05:
-	ld hl,$5F00
+	ld hl,jump_95_4017
 	rst $10
 	ret
 
 .jump06:
-	ld hl,$5F08
+	ld hl,jump_95_5BB7
 	rst $10
 	ret
 
 .jump07:
-	ld hl,$1800
+	ld hl,jump_24_400B
 	rst $10
 	ret
 
 .jump08:
-	ld hl,$550D
+	ld hl,jump_85_4936
 	rst $10
 	ret
 
 .jump09:
-	ld hl,$5900
+	ld hl,jump_89_4013
 	rst $10
 	ret
 
 .jump10:
-	ld hl,$5902
+	ld hl,jump_89_458F
 	rst $10
 	ret
 
 .jump11:
-	ld hl,$5904
+	ld hl,jump_89_4824
 	rst $10
 	ret
 
 .jump12:
-	ld hl,$5603
+	ld hl,jump_86_4916
 	rst $10
 	ret
 
 .jump13:
-	ld hl,$5607
+	ld hl,jump_86_403F
 	rst $10
 	ret

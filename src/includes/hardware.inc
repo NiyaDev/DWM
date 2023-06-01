@@ -702,6 +702,7 @@ DEF rPCM34 EQU $FF77
 ; --
 DEF rIE EQU $FFFF
 
+def IEF_UNUSED equ %11100000
 DEF IEF_HILO   EQU %00010000 ; Transition from High to Low of Pin number P10-P13
 DEF IEF_SERIAL EQU %00001000 ; Serial I/O transfer end
 DEF IEF_TIMER  EQU %00000100 ; Timer Overflow

@@ -12,7 +12,7 @@ clear_memory:
 	xor a
 	call mem_fill
 
-	; Clear $FF8A->$FFFE
+	; Clear HRAM
 	ld hl,$FF8A
 	ld bc,$0074
 	xor a

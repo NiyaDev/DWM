@@ -16,10 +16,6 @@ SECTION "0618", ROM0[$0618]
 FUN_0618:
 	nop
 
-SECTION "113E", ROM0[$113E]
-FUN_113E:
-	nop
-
 SECTION "122F", ROM0[$122F]
 FUN_122F:
 	nop
@@ -96,4 +92,70 @@ FUN_8_68DD:
 
 SECTION "78DD", ROMX[$78DD], BANK[8]
 FUN_8_78DD:
+	nop
+
+;! Jump table #1
+SECTION "401D", ROMX[$401D], BANK[1]
+def jump_1_401D equ $0100
+FUN_1_401D:
+	nop
+
+SECTION "4E9F", ROMX[$4E9F], BANK[2]
+def jump_2_4E9F equ $0201
+FUN_2_4E9F:
+	nop
+
+SECTION "4009", ROMX[$4009], BANK[21]
+def jump_21_4009 equ $1500
+FUN_21_4009:
+	nop
+
+SECTION "400B", ROMX[$400B], BANK[24]
+def jump_24_400B equ $1800
+FUN_24_400B:
+	nop
+
+SECTION "5DC9", ROMX[$5DC9], BANK[80]
+def jump_80_5DC9 equ $5000
+FUN_80_5DC9:
+	nop
+
+SECTION "4936", ROMX[$4936], BANK[85]
+def jump_85_4936 equ $550D
+FUN_85_4936:
+	nop
+
+SECTION "4916", ROMX[$4916], BANK[86]
+def jump_86_4916 equ $5603
+FUN_86_4916:
+	nop
+
+SECTION "403F", ROMX[$403F], BANK[86]
+def jump_86_403F equ $5607
+FUN_86_403F:
+	nop
+
+SECTION "4013", ROMX[$4013], BANK[89]
+def jump_89_4013 equ $5900
+FUN_89_4013:
+	nop
+
+SECTION "458F", ROMX[$458F], BANK[89]
+def jump_89_458F equ $5902
+FUN_89_458F:
+	nop
+
+SECTION "4824", ROMX[$4824], BANK[89]
+def jump_89_4824 equ $5904
+FUN_89_4824:
+	nop
+
+SECTION "4017", ROMX[$4017], BANK[95]
+def jump_95_4017 equ $5F00
+FUN_95_4017:
+	nop
+
+SECTION "5BB7", ROMX[$5BB7], BANK[95]
+def jump_95_5BB7 equ $5F08
+FUN_95_5BB7:
 	nop

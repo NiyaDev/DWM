@@ -315,6 +315,8 @@ include "src/bank0/FUN_113E.inc" ; 113E
 
 include "src/bank0/int_off.inc" ; 11DE
 
+include "src/bank0/FUN_1264.inc" ; 1264
+
 include "src/bank0/clear_memory.inc" ; 1288
 include "src/bank0/clear_vram.inc" ; 12A5
 include "src/bank0/mem_fill.inc" ; 12C7
@@ -331,6 +333,7 @@ include "src/bank0/FUN_14E1.inc" ; 14E1
 include "src/bank0/FUN_1627.inc" ; 1627
 
 include "src/bank0/FUN_1660.inc" ; 1660
+include "src/bank0/FUN_1688.inc" ; 1688
 
 include "src/bank0/audio_init.inc" ; 3331
 db $AF,$EA,$29,$DE,$C9,$3E,$04,$EA
@@ -340,6 +343,12 @@ include "src/bank0/FUN_336D.inc" ; 336D
 ;; BANK 8
 include "src/bank8/jump_table.inc"
 include "src/bank8/sgb_commands.inc"
+
+;; BANK 21
+include "src/bank21/jump_table.inc"
+include "src/bank21/FUN_4009.inc"
+include "src/bank21/FUN_404F.inc"
+
 
 ;; BANK123
 SECTION "BANK123", ROMX[$4000], BANK[123]

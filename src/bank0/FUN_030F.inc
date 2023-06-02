@@ -6,7 +6,7 @@ FUN_030F:
 	ld a,[unk_start_1]
 	rst $00
 
-;; TODO: These are all functions
+;; TODO: These are all functions?
 dw .jump01,.jump02,.jump03
 dw .jump04,.jump05,.jump06
 dw .jump07,.jump08,.jump09

@@ -13,6 +13,8 @@ def unk_start_7 equ $C774
 ; ANDed with 7 and leaves function if result is 0
 def unk_8_4015_1 equ $C777
 
+def unk_21_404F_1 equ $C817
+
 ; Set to $FF at init
 def unk_start_6 equ $C81B
 ; Set to 1 at init in multiple places
@@ -24,10 +26,16 @@ def IsGBC equ $C81D
 ; Checked if not 0 in FUN_036E
 def unk_start_9 equ $C825
 
+; 18 bytes filled ->$C839
+def unk_21_4009_3 equ $C827
+
 ; Set to 0 with others in init
 def unk_start_10 equ $C829
 ; Set to 0 with others in init
 def unk_start_11 equ $C82A
+
+def unk_21_4009_4_low equ $C83E
+def unk_21_4009_4_high equ $C83F
 
 ; Checked if < $0F, and < $03
 def unk_036E_1 equ $C842
@@ -53,6 +61,12 @@ def unk_1660_7 equ $C857
 def unk_1660_8 equ $C858
 ; Set to 0
 def unk_1660_9 equ $C859
+
+def unk_21_404F_8 equ $C863
+def unk_21_404F_9 equ $C864
+def unk_21_404F_6 equ $C865
+def unk_21_404F_7 equ $C866
+
 ; Set to 0 with others in init
 ; Set to 0 in FUN_1660
 def unk_start_8 equ $C86A
@@ -60,6 +74,7 @@ def unk_start_8 equ $C86A
 ; Loaded for testing for func call
 ; Checked if 0 in FUN_036E
 def unk_start_26 equ $C86C
+def unk_21_404F_10 equ $C86D
 
 ; Set to copy of rLY
 def unk_036E_2 equ $C886
@@ -67,10 +82,15 @@ def unk_036E_2 equ $C886
 ; Four bytes set to 0
 ; lowest used in FUN_030F
 def unk_start_1 equ $C88A
+def unk_start_1_1 equ $C88B
+def unk_start_1_2 equ $C88C
+def unk_start_1_3 equ $C88D
 ; Set to 0 with second group in init, loaded to test for jump
 def unk_start_15 equ $C88E
 ; Set to 0 with second group in init
 def unk_start_16 equ $C88F
+
+def unk_21_404F_5 equ $C892
 
 ; Calculated and then saved as big endian
 def unk_12D0_1 equ $C899
@@ -117,6 +137,12 @@ def unk_start_12 equ $C8C8
 ; Set to 0 with others in init
 def unk_start_13 equ $C8C9
 
+; 18 bytes filled ->$C8DA
+def unk_21_4009_5 equ $C8D2
+
+; 8 bytes filled ->$C8E2
+def unk_21_4009_2 equ $C8DA
+
 ; Set to 4 at init
 def unk_start_2 equ $C8EE
 
@@ -125,6 +151,9 @@ def unk_start_2 equ $C8EE
 ; Set to 0 with second group in init
 ; Causes lock up if not 0, inc, then saved in FUN_14CF
 def unk_start_24 equ $DA78
+
+def unk_21_4009_1_low equ $DA7B
+def unk_21_4009_1_high equ $DA7C
 
 ; Set to 0
 def unk_3331_1 equ $DE1D
@@ -161,8 +190,11 @@ def unk_14E1_7 equ $FFB1
 def unk_14E1_6 equ $FFB2
 def unk_14E1_9 equ $FFB3
 def unk_14E1_8 equ $FFB4
-
+def unk_21_404F_2 equ $FFB5
+def unk_21_404F_3 equ $FFB6
 def unk_140B equ $FFB7
+
+def unk_21_404F_4 equ $FFBB
 
 ; Set to 0
 def unk_high_1417 equ $CB

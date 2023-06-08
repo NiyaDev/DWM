@@ -4,9 +4,6 @@ def unk_start_18 equ $C740
 ; Set to 0 with second group in init
 def unk_start_19 equ $C741
 
-; Set to various numbers in the weird section
-; Set to $0B or $0A in check_sgb
-; Used in FUN_8_4015
 ; SGB command offset
 def unk_start_7 equ $C774
 
@@ -17,8 +14,7 @@ def unk_21_404F_1 equ $C817
 
 ; Set to $FF at init
 def unk_start_6 equ $C81B
-; Set to 1 at init in multiple places
-; If 0, will skip waits
+; Bool: If false, will skip waits
 def doWait equ $C81C
 def IsGBC equ $C81D
 
@@ -155,7 +151,7 @@ def unk_start_24 equ $DA78
 def unk_21_4009_1_low equ $DA7B
 def unk_21_4009_1_high equ $DA7C
 
-; Set to 0
+; Copy of 
 def unk_3331_1 equ $DE1D
 
 ; Set to input b

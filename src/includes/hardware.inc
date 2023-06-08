@@ -69,6 +69,8 @@ DEF rROMB1       EQU $3100 ; $3000->$3fff - If more than 256 ROM banks are prese
 DEF rRAMB        EQU $4100 ; $4000->$5fff - Bit 3 enables rumble (if present)
 DEF rRAMB_ex     EQU $4000
 
+def WRITE_SRAM equ $0A
+
 
 ;***************************************************************************
 ;*

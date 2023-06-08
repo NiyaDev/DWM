@@ -3,6 +3,7 @@ SECTION "3331", ROM0[$3331]
 
 ; Initiailizes audio
 audio_init:
+	; FUN_336D(0,0)
 	ld bc,0
 	call FUN_336D
 
@@ -13,7 +14,8 @@ audio_init:
 	; Panning - Disable
 	xor a
 	ldh [rNR51],a
-	; 
+
+	; Set to 0
 	ld [unk_3331_1],a
 
 	; Volume - Disables mixing and sets volume to max
@@ -26,15 +28,15 @@ audio_init:
 	ld a,$FF
 .loop:
 	ld [HL],a
-	ld de,$19
+	ld de,25
 	add hl,de
 	ld [hl],a
-	ld de,$01
+	ld de,1
 	add hl,de
 	dec b
 	jr nz,.loop
 
-	; 
+	; Set to 0
 	xor a
 	ld [unk_3331_3],a
 	

@@ -1,5 +1,5 @@
 
-SECTION "1288", ROM0[$1288]
+SECTION "clear_memory", ROM0[$1288]
 
 ; Clear most of RAM and HRAM while preserving DMA_transfer and IsGBC
 clear_memory:
@@ -7,13 +7,13 @@ clear_memory:
 	push af
 	
 	; Clear $C000->$DE00
-	ld hl,$C000
+	ld hl,_RAM
 	ld bc,$1E00
 	xor a
 	call mem_fill
 
 	; Clear HRAM
-	ld hl,$FF8A
+	ld hl,_HRAMP
 	ld bc,$0074
 	xor a
 	call mem_fill

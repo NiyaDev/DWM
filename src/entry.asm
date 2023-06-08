@@ -8,6 +8,7 @@ include "src/todo.inc"
 include "src/home/reset_vectors.inc"
 include "src/home/interrupts.inc"
 include "src/home/copy_dma.inc"
+
 db $13,$cd,$90,$12,$cd,$00,$40,$cd
 db $ba,$17,$af,$ea,$84,$c9,$e1,$d1
 db $c1,$f1,$d9,$cd,$c2,$00,$af,$e0
@@ -47,7 +48,7 @@ Start:
 	; Set stack
 	ld sp,$DFFF
 
-	call int_off
+	call int_res
 	call clear_memory
 	call copy_dma
 
@@ -71,6 +72,7 @@ Start:
 	ld [unk_start_1],a
 	
 	; Writing to $6100 for some reason
+	; Potentially a remnant from a time when they used a different MBC?
 	ld a,1
 	ld [$6100],a
 	ld a,0
@@ -81,7 +83,7 @@ Start:
 	ld [rRAMB],a
 
 	; Enable reading and writing to SRAM
-	ld a,$0A
+	ld a,WRITE_SRAM
 	ld [rRAMG],a
 
 	; Set ROM bank to 1
@@ -119,6 +121,7 @@ Start:
 	call check_sgb
 	jr c,.sgb_commands
 
+	; Turn off wait
 	xor a
 	ld [doWait],a
 	jp .LAB_028B
@@ -192,7 +195,7 @@ Start:
 	rst $10
 	call wait_7000
 
-	; 
+	; SGB Request: Initialize SGB color palettes
 	ld a,sgb_command_paltrn
 	ld de,jump_8_447E
 	ld bc,2048
@@ -313,7 +316,7 @@ include "src/bank0/FUN_10E5.inc" ; 10E5
 
 include "src/bank0/FUN_113E.inc" ; 113E 
 
-include "src/bank0/int_off.inc" ; 11DE
+include "src/bank0/int_res.inc" ; 11DE
 
 include "src/bank0/FUN_1264.inc" ; 1264
 

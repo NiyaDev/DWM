@@ -1,9 +1,15 @@
 
 SECTION "113E", ROM0[$113E]
 
-; Copies data from a bank to Tile block 1
-; Uses SGB commands, so probably has to do with that.
-; THEORY: It copies the pixel data for the border in SGB mode
+; Called three times when a new sgb border is needed
+; - Call 1: Init PAL_TRN
+; - Call 2: Copy lower BG
+; - Call 3: Copy upper BG
+
+; * a-command
+; * d-bank
+; * e-offset
+; * bc-count
 FUN_113E:
 	; Sets unk_start_7 to input a
 	ld [wUNK_START_7],a

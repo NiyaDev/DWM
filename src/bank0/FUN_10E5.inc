@@ -2,7 +2,12 @@
 SECTION "10E5", ROM0[$10E5]
 
 ; Clears the sprite data copied using FUN_113E
+
+; * a-command
+; * d-bank
+; * e-offset
 FUN_10E5:
+	; Sets unk_start_7 to input a
 	ld [wUNK_START_7],a
 
 	; skip if waiting off

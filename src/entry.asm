@@ -140,100 +140,39 @@ Start:
 	call wait
 
 	; SGB Request: Mask with black screen
-	ld a,sgb_command_maskblack
-	ld [wUNK_START_7],a
-	ld hl,jump_sgb_commands
-	rst $10
-	call wait_7000
+	SGBCommand sgb_command_maskblack
 
-	; SGB Request: Sends data 1
-	ld a,sgb_command_data1
-	ld [wUNK_START_7],a
-	ld hl,jump_sgb_commands
-	rst $10
-	call wait_7000
+	; SGB Request: Send data 
+	SGBCommand sgb_command_data1
+	SGBCommand sgb_command_data2
+	SGBCommand sgb_command_data3
+	SGBCommand sgb_command_data4
+	SGBCommand sgb_command_data5
+	SGBCommand sgb_command_data6
+	SGBCommand sgb_command_data7
+	SGBCommand sgb_command_data8
 
-	; SGB Request: Sends data 2
-	ld a,sgb_command_data2
-	ld [wUNK_START_7],a
-	ld hl,jump_sgb_commands
-	rst $10
-	call wait_7000
-
-	; SGB Request: Sends data 3
-	ld a,sgb_command_data3
-	ld [wUNK_START_7],a
-	ld hl,jump_sgb_commands
-	rst $10
-	call wait_7000
-
-	; SGB Request: Sends data 4
-	ld a,sgb_command_data4
-	ld [wUNK_START_7],a
-	ld hl,jump_sgb_commands
-	rst $10
-	call wait_7000
-
-	; SGB Request: Sends data 5
-	ld a,sgb_command_data5
-	ld [wUNK_START_7],a
-	ld hl,jump_sgb_commands
-	rst $10
-	call wait_7000
-
-	; SGB Request: Sends data 6
-	ld a,sgb_command_data6
-	ld [wUNK_START_7],a
-	ld hl,jump_sgb_commands
-	rst $10
-	call wait_7000
-
-	; SGB Request: Sends data 7
-	ld a,sgb_command_data7
-	ld [wUNK_START_7],a
-	ld hl,jump_sgb_commands
-	rst $10
-	call wait_7000
-
-	; SGB Request: Sends data 8
-	ld a,sgb_command_data8
-	ld [wUNK_START_7],a
-	ld hl,jump_sgb_commands
-	rst $10
-	call wait_7000
-
-	; SGB Request: Initialize SGB color palettes
+	; Initialize Palette Transfer
 	ld a,sgb_command_paltrn
 	ld de,jump_8_447E
 	ld bc,2048
 	call FUN_113E
 	call wait_7000
 
+	; Initialize Attribute files
 	ld a,sgb_command_attrtrn
 	ld de,jump_8_449E
 	call FUN_10E5
 	call wait_7000
 
 	; SGB Request: Sets palette Priority to software
-	ld a,sgb_command_palpri
-	ld [wUNK_START_7],a
-	ld hl,jump_sgb_commands
-	rst $10
-	call wait_7000
+	SGBCommand sgb_command_palpri
 
 	; SGB Request: 1-Player
-	ld a,sgb_command_multione
-	ld [wUNK_START_7],a
-	ld hl,jump_sgb_commands
-	rst $10
-	call wait_7000
+	SGBCommand sgb_command_multione
 
 	; SGB Request: Disable built in Palettes
-	ld a,sgb_command_iconenable
-	ld [wUNK_START_7],a
-	ld hl,jump_sgb_commands
-	rst $10
-	call wait_7000
+	SGBCommand sgb_command_iconenable
 
 	ld a,1
 	ld [doWait],a

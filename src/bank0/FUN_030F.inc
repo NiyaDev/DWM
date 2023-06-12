@@ -3,7 +3,7 @@ SECTION "030F", ROM0[$030F]
 
 ; Calls RST10 with different inputs depending on input 0->12
 FUN_030F:
-	ld a,[unk_start_1]
+	ld a,[wUNK_START_1]
 	rst $00
 
 ;; TODO: These are all functions?

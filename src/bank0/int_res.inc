@@ -27,7 +27,7 @@ lcd_off:
 
 	; Turn off LCD and mirror in memory
 	res 7,[hl]
-	ld hl,unk_11E7_1
+	ld hl,wUNK_11E7_1
 	res 7,[hl]
 
 	ret

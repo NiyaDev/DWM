@@ -2,6 +2,7 @@
 ; Definitions
 include "src/includes/hardware.inc"
 include "src/constants.inc"
+include "src/macros.inc"
 include "src/todo.inc"
 
 ;; RAM
@@ -65,7 +66,7 @@ Start:
 	call mem_fill
 
 	; Set $C88A->$C88D to 0
-	ld hl,unk_start_1
+	ld hl,wUNK_START_1
 	xor a
 	ld [hl+],a
 	ld [hl+],a
@@ -73,9 +74,9 @@ Start:
 	ld [hl],a
 
 	ld a,4
-	ld [unk_start_2],a
+	ld [wUNK_START_2],a
 	ld a,0
-	ld [unk_start_1],a
+	ld [wUNK_START_1],a
 	
 	; Writing to $6100 for some reason
 	; Potentially a remnant from a time when they used a different MBC?
@@ -103,13 +104,13 @@ Start:
 	ld a,1
 	ld [doWait],a
 	ld a,$FF
-	ld [unk_start_4_low],a
-	ld [unk_start_4_hig],a
+	ld [wUNK_START_4],a
+	ld [wUNK_START_4+1],a
 	
 	call audio_init
 
 	xor a
-	ld [unk_start_5],a
+	ld [wUNK_START_5],a
 
 	; If IsGBC == false, skip
 	ld a,[IsGBC]
@@ -248,43 +249,43 @@ Start:
 	call FUN_1660
 
 	xor a
-	ld [unk_start_8],a
-	ld [unk_start_9],a
-	ld [unk_start_10],a
-	ld [unk_start_11],a
-	ld [unk_start_12],a
-	ld [unk_start_13],a
-	ld [unk_start_14],a
+	ld [wUNK_START_8],a
+	ld [wUNK_START_9],a
+	ld [wUNK_START_10],a
+	ld [wUNK_START_11],a
+	ld [wUNK_START_12],a
+	ld [wUNK_START_13],a
+	ld [wUNK_START_14],a
 	call FUN_030F
 
 	xor a
-	ld [unk_start_15],a
-	ld [unk_start_16],a
-	ld [unk_start_17],a
+	ld [wUNK_START_15],a
+	ld [wUNK_START_16],a
+	ld [wUNK_START_17],a
 	ld [wUNK_START_18],a
 	ld [wUNK_START_19],a
-	ld [unk_start_20],a
-	ld [unk_start_21_low],a
-	ld [unk_start_21_hig],a
-	ldh [unk_high_start_1],a
-	ld [unk_start_23],a
-	ld [unk_start_24],a
-	ld hl,unk_start_25
+	ld [wUNK_START_20],a
+	ld [wUNK_START_21],a
+	ld [wUNK_START_21+1],a
+	ldh [hUNK_START],a
+	ld [wUNK_START_23],a
+	ld [wUNK_START_24],a
+	ld hl,wUNK_START_25
 	ld [hl+],a
 	ld [hl+],a
 	ld [hl+],a
 	ld [hl],a
 
 .LAB_02DB:
-	ld a,[unk_start_26]
+	ld a,[wUNK_START_26]
 	or a
 	call z,FUN_12D0
 
-	ld a,[unk_start_15]
+	ld a,[wUNK_START_15]
 	or a
 	jr z,.LAB_02DB
 
-	ld a,[unk_start_27]
+	ld a,[wUNK_START_27]
 	or a
 	jr z,.LAB_02F2
 
@@ -293,7 +294,7 @@ Start:
 
 .LAB_02F2:
 	di
-	ld a,[unk_start_26]
+	ld a,[wUNK_START_26]
 	or a
 	call nz,audio_init
 	call int_res

@@ -7,42 +7,42 @@ FUN_21_4009:
 	; Store return address in unk_21_4009_1
 	ld hl, sp+0
 	ld a,l
-	ld [unk_21_4009_1_low],a
+	ld [wUNK_21_4009_1],a
 	ld a,h
-	ld [unk_21_4009_1_high],a
+	ld [wUNK_21_4009_1+1],a
 
 	; Clears $C8DA->$C8E2
 	xor a
-	ld hl,unk_21_4009_2
+	ld hl,wUNK_21_4009_2
 	ld bc,8
 	call mem_fill
 
-	; Clears $C827->$C839
+	; Clears $C827->$C838
 	xor a
-	ld hl,unk_21_4009_3
+	ld hl,wUNK_21_4009_3
 	ld bc,18
 	call mem_fill
 
 	; Stores $99C1 into WRAM
 	ld hl,$99C1
 	ld a,l
-	ld [unk_21_4009_4_low],a
+	ld [wUNK_21_4009_4],a
 	ld a,h
-	ld [unk_21_4009_4_high],a
+	ld [wUNK_21_4009_4+1],a
 
 	; Clears $C8D2->$C8DA
 	xor a
-	ld hl,unk_21_4009_5
+	ld hl,wUNK_21_4009_5
 	ld bc,8
 	call mem_fill
 
 	call FUN_1264
 
 	xor a
-	ld [unk_start_5],a
+	ld [wUNK_START_5],a
 
 	; Uses second byte of unk_start_1
-	ld a,[unk_start_1_1]
+	ld a,[wUNK_START_1+1]
 	rst $00
 
 

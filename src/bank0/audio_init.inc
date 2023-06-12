@@ -16,14 +16,14 @@ audio_init:
 	ldh [rNR51],a
 
 	; Set to 0
-	ld [unk_3331_1],a
+	ld [wUNK_3331_1],a
 
 	; Volume - Disables mixing and sets volume to max
 	ld a,$77
 	ldh [rNR50],a
 
 	; This loop sets a number of locations to $FF
-	ld hl,unk_3331_2
+	ld hl,wUNK_3331_2
 	ld b,6
 	ld a,$FF
 .loop:
@@ -38,6 +38,6 @@ audio_init:
 
 	; Set to 0
 	xor a
-	ld [unk_3331_3],a
+	ld [wUNK_3331_3],a
 	
 	ret

@@ -87,7 +87,7 @@ FUN_113E:
 	; Turn on LCD and BG
 	ld a,LCDCF_ON | LCDCF_BGON
 	ldh [rLCDC],a
-	ld [unk_11E7_1],a
+	ld [wUNK_11E7_1],a
 
 	; Wait and send SGB command
 	ld bc,5

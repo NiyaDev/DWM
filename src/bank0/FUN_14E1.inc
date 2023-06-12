@@ -13,7 +13,7 @@ FUN_14E1:
 	ld a,[de]
 	inc de
 	push hl
-	ld hl,unk_14E1_1
+	ld hl,hUNK_14E1_1
 	cp [hl]
 	jr z,.LAB_14FC
 
@@ -33,12 +33,12 @@ FUN_14E1:
 	pop hl
 
 	ld a,[de]
-	ldh [unk_14E1_2],a
+	ldh [hUNK_14E1_2],a
 	inc de
 	ld a,[de]
-	ldh [unk_14E1_3],a
+	ldh [hUNK_14E1_3],a
 	inc de
-	ldh a,[unk_14E1_3]
+	ldh a,[hUNK_14E1_3]
 	push af
 	and $0F
 	add $04
@@ -50,18 +50,18 @@ FUN_14E1:
 	add $13
 
 .LAB_1514:
-	ldh [unk_14E1_3],a
+	ldh [hUNK_14E1_3],a
 	pop af
 	push de
 	swap a
 	and $0F
 	ld d,a
-	ldh a,[unk_14E1_2]
+	ldh a,[hUNK_14E1_2]
 	ld e,a
 	push hl
-	ldh a,[unk_14E1_4]
+	ldh a,[hUNK_14E1_4]
 	ld l,a
-	ldh a,[unk_14E1_5]
+	ldh a,[hUNK_14E1_5]
 	ld h,a
 	add hl,de
 	ld e,l
@@ -69,7 +69,7 @@ FUN_14E1:
 	pop hl
 
 .LAB_152B:
-	ldh a,[unk_14E1_6]
+	ldh a,[hUNK_14E1_6]
 	cp d
 	jr z,.LAB_1534
 	jr c,.LAB_153B
@@ -77,7 +77,7 @@ FUN_14E1:
 
 
 .LAB_1534:
-	ldh a,[unk_14E1_7]
+	ldh a,[hUNK_14E1_7]
 	cp e
 	jr z,.LAB_153B
 	jr nc,.LAB_1556
@@ -86,7 +86,7 @@ FUN_14E1:
 	ld a,$F0
 	add d
 	ld d,a
-	ldh a,[unk_14E1_8]
+	ldh a,[hUNK_14E1_8]
 	cp d
 	jr z,.LAB_1548
 	jr nc,.LAB_154F
@@ -94,7 +94,7 @@ FUN_14E1:
 
 
 .LAB_1548:
-	ldh a,[unk_14E1_9]
+	ldh a,[hUNK_14E1_9]
 	cp e
 	jr z,.LAB_1556
 	jr c,.LAB_1556
@@ -117,9 +117,9 @@ FUN_14E1:
 	or c
 	jr z,.LAB_1569
 
-	ldh a,[unk_14E1_3]
+	ldh a,[hUNK_14E1_3]
 	dec a
-	ldh [unk_14E1_3],a
+	ldh [hUNK_14E1_3],a
 
 	jr nz,.LAB_152B
 

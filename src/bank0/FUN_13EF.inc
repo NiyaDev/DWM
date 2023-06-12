@@ -3,7 +3,7 @@ SECTION "13EF", ROM0[$13EF]
 
 ; 
 FUN_13EF:
-	ld hl,unk_13EF_1
+	ld hl,wUNK_13EF_1
 	ld a,$D2
 	ld [HL+],a
 	ld a,$D2
@@ -11,12 +11,12 @@ FUN_13EF:
 	ld a,$E2
 	ld [hl],a
 
-	ld hl,unk_13EF_4
-	ld a,[unk_13EF_1]
+	ld hl,wUNK_13EF_2
+	ld a,[wUNK_13EF_1]
 	ld [hl+],a
-	ld a,[unk_13EF_2]
+	ld a,[wUNK_13EF_1+1]
 	ld [hl+],a
-	ld a,[unk_13EF_3]
+	ld a,[wUNK_13EF_1+2]
 	ld [hl],a
 
 	ret

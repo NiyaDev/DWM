@@ -19,38 +19,38 @@ FUN_21_404F:
 	call FUN_1688
 
 	ld a,7
-	ldh [unk_21_404F_2],a
+	ldh [hUNK_21_404F_2],a
 
 	ld a,$FF
-	ldh [unk_21_404F_3],a
+	ldh [hUNK_21_404F_3],a
 
 	ld a,0
-	ldh [unk_21_404F_4],a
+	ldh [hUNK_21_404F_4],a
 
 	ld a,0
-	ldh [unk_140B],a
+	ldh [hUNK_140B],a
 
 	xor a
-	ld [unk_start_21_low],a
-	ld [unk_start_21_hig],a
+	ld [wUNK_START_21],a
+	ld [wUNK_START_21+1],a
 
 	xor a
-	ld [unk_21_404F_5],a
+	ld [wUNK_21_404F_5],a
 
 	ld a,0
-	ld [unk_21_404F_6],a
+	ld [wUNK_21_404F_6],a
 
 	ld a,0
-	ld [unk_21_404F_7],a
-	ld [unk_start_26],a
-	ld [unk_21_404F_8],a
+	ld [wUNK_21_404F_7],a
+	ld [wUNK_START_26],a
+	ld [wUNK_21_404F_8],a
 
 	xor a
-	ld [unk_21_404F_10],a
-	ld [unk_21_404F_9],a
+	ld [wUNK_21_404F_10],a
+	ld [wUNK_21_404F_9],a
 
 	ld a,3
-	ld [unk_11E7_1],a
+	ld [wUNK_11E7_1],a
 
 	ld a,1
 ;	jp .LAB_11CB

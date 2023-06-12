@@ -7,9 +7,9 @@ FUN_12D0:
 	push de
 
 	; Load pointer
-	ld a,[unk_12D0_1]
+	ld a,[wUNK_12D0_1]
 	ld h,a
-	ld a,[unk_12D0_2]
+	ld a,[wUNK_12D0_1+1]
 	ld l,a
 	
 	; Calculate pointer
@@ -24,9 +24,9 @@ FUN_12D0:
 
 	; Save pointer back to mem
 	ld a,h
-	ld [unk_12D0_1],a
+	ld [wUNK_12D0_1],a
 	ld a,l
-	ld [unk_12D0_2],a
+	ld [wUNK_12D0_1+1],a
 
 	pop de
 	pop hl

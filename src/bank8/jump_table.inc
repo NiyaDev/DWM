@@ -31,6 +31,6 @@ dw $78DD
 SECTION "DATA_8_447E", ROMX[$447E], BANK[8]
 
 ;; Seems to be sgb palette data
-DATA_8_447E: incbin "src/testing/DATA_8_447E.bin"
-DATA_8_449E: incbin "src/testing/DATA_8_449E.bin"
-DATA_8_44A5: incbin "src/testing/DATA_8_44A5.bin"
+DATA_8_447E: incbin "src/bank8/DATA_8_447E.bin"
+DATA_8_449E: incbin "src/bank8/DATA_8_449E.bin"
+DATA_8_44A5: incbin "src/bank8/DATA_8_44A5.bin"

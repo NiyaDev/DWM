@@ -71,6 +71,63 @@ DEF rRAMB_ex     EQU $4000
 
 def WRITE_SRAM equ $0A
 
+; *** SGB Commands *** ;
+def PAL_01		equ $00
+def PAL_23		equ $01
+def PAL_03		equ $02
+def PAL_12		equ $03
+def ATTR_BLK	equ $04
+def ATTR_LIN	equ $05
+def ATTR_DIV	equ $06
+def ATTR_CHR	equ $07
+def SOUND		equ $08
+def SOU_TRN		equ $09
+def PAL_SET		equ $0A
+def PAL_TRN		equ $0B
+def ATRC_EN		equ $0C
+def TEST_EN		equ $0D
+def ICON_EN		equ $0E
+def DATA_SND	equ $0F
+def DATA_TRN	equ $10
+def MLT_REQ		equ $11
+def JUMP		equ $12
+def CHR_TRN		equ $13
+def PCT_TRN		equ $14
+def ATTR_TRN	equ $15
+def ATTR_SET	equ $16
+def MASK_EN		equ $17
+def OBJ_TRN		equ $18
+def PAL_PRI		equ $19
+
+; ** SGB Others *** ;
+; * PAL_SET $0A
+def PAL_SET_CANCEL	equ %01000000
+def PAL_SET_USE		equ %10000000
+; * ICON_EN $0E
+def ICON_EN_BIPAL_E equ %00000000 ; Use Built in palettes
+def ICON_EN_BIPAL_D equ %00000001 ; 
+def ICON_EN_CONSU_E equ %00000000 ; Controller setup screen
+def ICON_EN_CONSU_D equ %00000010 ; 
+def ICON_EN_REGTR_R equ %00000000 ; SGB Register file tansfer
+def ICON_EN_REGTR_D equ %00000100 ; 
+; * MLT_REQ $11
+def MLT_REQ_1P		equ %00000000
+def MLT_REQ_2P		equ %00000001
+def MLT_REQ_4P		equ %00000011
+; * CHR_TRN $13
+def CHR_TRN_LOWER	equ %00000000
+def CHR_TRN_UPPER	equ %00000001
+def CHR_TRN_BG		equ %00000000
+def CHR_TRN_OBJ		equ %00000010
+; * MASK_EN $17
+def MASK_EN_CANCEL	equ %00000000
+def MASK_EN_FREEZE	equ %00000001
+def MASK_EN_BLANKB	equ %00000010
+def MASK_EN_BLANKC	equ %00000011
+; * PAL_PRI $19
+def PAL_PRI_USER	equ %00000000
+def PAL_PRI_SOFT	equ %00000001
+
 
 ;***************************************************************************
 ;*

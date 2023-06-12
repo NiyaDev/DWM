@@ -6,7 +6,7 @@ SECTION "113E", ROM0[$113E]
 ; THEORY: It copies the pixel data for the border in SGB mode
 FUN_113E:
 	; Sets unk_start_7 to input a
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 
 	; Checks if waiting is on
 	ld a,[doWait]

@@ -4,7 +4,7 @@ SECTION "404F", ROMX[$404F], BANK[21]
 ; Sets a bunch of variables
 FUN_21_404F:
 
-	ld hl,unk_21_404F_1
+	ld hl,wUNK_21_404F_1
 	ld [hl],a
 	inc hl
 	ld [hl],a

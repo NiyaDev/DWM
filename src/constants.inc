@@ -1,22 +1,4 @@
 
-; Set to 0 with second group in init
-def unk_start_18 equ $C740
-; Set to 0 with second group in init
-def unk_start_19 equ $C741
-
-; SGB command offset
-def unk_start_7 equ $C774
-
-; ANDed with 7 and leaves function if result is 0
-def unk_8_4015_1 equ $C777
-
-def unk_21_404F_1 equ $C817
-
-; Set to $FF at init
-def unk_start_6 equ $C81B
-; Bool: If false, will skip waits
-def doWait equ $C81C
-def IsGBC equ $C81D
 
 ; Set to 0 with others in init
 ; Checked if not 0 in FUN_036E

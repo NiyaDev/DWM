@@ -4,6 +4,12 @@ include "src/includes/hardware.inc"
 include "src/constants.inc"
 include "src/todo.inc"
 
+;; RAM
+include "src/ram/hram.inc"
+include "src/ram/sram.inc"
+include "src/ram/vram.inc"
+include "src/ram/wram.inc"
+
 ; Home
 include "src/home/reset_vectors.inc"
 include "src/home/interrupts.inc"
@@ -134,63 +140,63 @@ Start:
 
 	; SGB Request: Mask with black screen
 	ld a,sgb_command_maskblack
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 1
 	ld a,sgb_command_data1
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 2
 	ld a,sgb_command_data2
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 3
 	ld a,sgb_command_data3
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 4
 	ld a,sgb_command_data4
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 5
 	ld a,sgb_command_data5
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 6
 	ld a,sgb_command_data6
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 7
 	ld a,sgb_command_data7
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Sends data 8
 	ld a,sgb_command_data8
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
@@ -209,21 +215,21 @@ Start:
 
 	; SGB Request: Sets palette Priority to software
 	ld a,sgb_command_palpri
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: 1-Player
 	ld a,sgb_command_multione
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
 
 	; SGB Request: Disable built in Palettes
 	ld a,sgb_command_iconenable
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000
@@ -232,7 +238,7 @@ Start:
 	ld [doWait],a
 
 	ld a,$FF
-	ld [unk_start_6],a
+	ld [wUNK_START_6],a
 
 .LAB_028B:
 	call clear_vram
@@ -255,8 +261,8 @@ Start:
 	ld [unk_start_15],a
 	ld [unk_start_16],a
 	ld [unk_start_17],a
-	ld [unk_start_18],a
-	ld [unk_start_19],a
+	ld [wUNK_START_18],a
+	ld [wUNK_START_19],a
 	ld [unk_start_20],a
 	ld [unk_start_21_low],a
 	ld [unk_start_21_hig],a
@@ -290,12 +296,12 @@ Start:
 	ld a,[unk_start_26]
 	or a
 	call nz,audio_init
-	call int_off
+	call int_res
 	call wait_7000
 
-	; SGB Request: Cancel mask
-	ld a,sgb_command_maskcancel
-	ld [unk_start_7],a
+	; SGB Request: Freeze mask
+	ld a,sgb_command_maskfreeze
+	ld [wUNK_START_7],a
 	ld hl,jump_sgb_commands
 	rst $10
 	call wait_7000

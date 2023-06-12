@@ -3,7 +3,7 @@ SECTION "10E5", ROM0[$10E5]
 
 ; Clears the sprite data copied using FUN_113E
 FUN_10E5:
-	ld [unk_start_7],a
+	ld [wUNK_START_7],a
 
 	; skip if waiting off
 	ld a,[doWait]

@@ -3,7 +3,7 @@ SECTION "14E1", ROM0[$14E1]
 
 ; 
 FUN_14E1:
-	ld a,[rRAMB_ex]
+	ld a,[rRAMB]
 	push af
 
 	; 

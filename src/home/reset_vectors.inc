@@ -28,16 +28,16 @@ ALT08:
 ; Changes ROM bank to H, then jumps to
 ; the pointer located at $4001 + L*2
 RST10:
-	ld a,[rRAMB_ex]
+	ld a,[rRAMB]
 	push af
 	
 	ld a,h
-	ld [rROMB0],a
+	ld [rROMB0+$100],a
 
 	swap a
 	rra
 	and $03
-	ld [rRAMB],a
+	ld [rRAMB+$100],a
 
 ; Doubles L and uses it to offset $4001
 	add hl,hl
@@ -47,12 +47,12 @@ RST10:
 	call RST08
 
 	pop af
-	ld [rROMB0],a
+	ld [rROMB0+$100],a
 	swap a
 
 	rra
 	and $03
-	ld [rRAMB],a
+	ld [rRAMB+$100],a
 	ret
 db $FF
 

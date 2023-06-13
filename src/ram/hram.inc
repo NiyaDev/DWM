@@ -20,6 +20,7 @@ hUNK_14E1_9:: db ; $FFB3
 hUNK_14E1_8:: db ; $FFB4
 hUNK_21_404F_2:: db ; $FFB5
 hUNK_21_404F_3:: db ; $FFB6
+; 8 bytes cleared $FFB7->$FFBE
 hUNK_140B:: db ; $FFB7
 
 

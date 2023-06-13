@@ -78,27 +78,26 @@ Start:
 	ld a,0
 	ld [wUNK_START_1],a
 	
-	; Writing to $6100 for some reason
-	; Potentially a remnant from a time when they used a different MBC?
+	; Writing to SRAM and RTCLatch? Does MBC5 even have that?
 	ld a,1
-	ld [$6100],a
+	ld [rRTCLATCH+$100],a
 	ld a,0
-	ld [rRAMB],a
+	ld [rRAMB+$100],a
 	ld a,0
-	ld [$6100],a
+	ld [rRTCLATCH+$100],a
 	ld a,0
-	ld [rRAMB],a
+	ld [rRAMB+$100],a
 
 	; Enable reading and writing to SRAM
 	ld a,WRITE_SRAM
-	ld [rRAMG],a
+	ld [rRAMG+$100],a
 
 	; Set ROM bank to 1
 	ld a,1
-	ld [rROMB0],a
+	ld [rROMB0+$100],a
 	; Set SRAM bank to 0
 	ld a,0
-	ld [rRAMB],a
+	ld [rRAMB+$100],a
 
 	; Setting some variables
 	ld a,1
@@ -156,7 +155,7 @@ Start:
 	ld a,sgb_command_paltrn
 	ld de,jump_8_447E
 	ld bc,2048
-	call FUN_113E
+	call sgb_copy_border
 	call wait_7000
 
 	; Initialize Attribute files
@@ -260,7 +259,7 @@ include "src/bank0/check_sgb.inc" ; 1024
 include "src/bank0/wait.inc" ; 10CF
 include "src/bank0/FUN_10E5.inc" ; 10E5
 
-include "src/bank0/FUN_113E.inc" ; 113E 
+include "src/bank0/sgb_copy_border.inc" ; 113E 
 
 include "src/bank0/int_res.inc" ; 11DE
 

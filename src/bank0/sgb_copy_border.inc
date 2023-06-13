@@ -5,12 +5,11 @@ SECTION "113E", ROM0[$113E]
 ; - Call 1: Init PAL_TRN
 ; - Call 2: Copy lower BG
 ; - Call 3: Copy upper BG
-
 ; * a-command
 ; * d-bank
 ; * e-offset
 ; * bc-count
-FUN_113E:
+sgb_copy_border:
 	; Sets unk_start_7 to input a
 	ld [wUNK_START_7],a
 
@@ -35,7 +34,7 @@ FUN_113E:
 	pop bc
 
 	; Saves current SRAM bank
-	ld a,[rRAMB_ex]
+	ld a,[rRAMB]
 	push af
 	push bc
 

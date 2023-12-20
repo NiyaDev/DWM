@@ -111,7 +111,7 @@ Start:
 	xor a
 	ld [wUNK_START_5],a
 
-	; If IsGBC == false, skip
+	; If on DMG, jump
 	ld a,[IsGBC]
 	or a
 	jr z,.check_for_sgb
@@ -130,7 +130,7 @@ Start:
 	; Turn off wait
 	xor a
 	ld [doWait],a
-	jp .LAB_028B
+	jp .main_loop
 
 
 .sgb_commands:
@@ -179,7 +179,7 @@ Start:
 	ld a,$FF
 	ld [wUNK_START_6],a
 
-.LAB_028B:
+.main_loop:
 	call clear_vram
 	call FUN_1417
 	call FUN_13EF
@@ -245,7 +245,7 @@ Start:
 	rst $10
 	call wait_7000
 
-	jp .LAB_028B
+	jp .main_loop
 
 
 ;; Functions

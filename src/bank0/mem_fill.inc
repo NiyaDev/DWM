@@ -1,8 +1,11 @@
 
 SECTION "12C7", ROM0[$12C7]
 
+; `$12C7 | Bank:0`
+;
+; Fills the allotted amount of memory at destination with fill.
+;
 ; HL - dest, BC - count, A - fill
-; Fills the alloted amount of memory at destination with fill.
 mem_fill:
 	ld d,a
 

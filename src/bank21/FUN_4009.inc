@@ -1,11 +1,13 @@
 
 SECTION "4009", ROMX[$4009], BANK[21]
 
+; `$4009 | Bank:21`
+; 
 ; Clears and sets a bunch of memory and then uses jumptable
 FUN_21_4009:
 
 	; Store return address in unk_21_4009_1
-	ld hl, sp+0
+	ld hl,sp+0
 	ld a,l
 	ld [wUNK_21_4009_1],a
 	ld a,h
@@ -42,7 +44,7 @@ FUN_21_4009:
 	ld [wUNK_START_5],a
 
 	; Uses second byte of unk_start_1
-	ld a,[wUNK_START_1+1]
+	ld a,[wUNK_START_1_2]
 	rst $00
 
 

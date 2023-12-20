@@ -1,12 +1,34 @@
 
 SECTION "030F", ROM0[$030F]
 
-; Calls RST10 with different inputs depending on input 0->12
+; $030F
+;
+; TODO Gotta name this
+;
+; Jump table:
+;
+; ` 1: Bank 21 / $4009`
+; ` 2: Bank  1 / $401D`
+; ` 3: Bank 80 / $5DC9`
+;
+; ` 4: Bank  2 / $4E9F`
+; ` 5: Bank 95 / $4017`
+; ` 6: Bank 95 / $5BB7`
+;
+; ` 7: Bank 24 / $400B`
+; ` 8: Bank 85 / $4936`
+; ` 9: Bank 89 / $4013`
+;
+; `10: Bank 89 / $458F`
+; `11: Bank 89 / $4824`
+; `12: Bank 86 / $4916`
+;
+; `13: Bank 86 / $403F`
+;
 FUN_030F:
 	ld a,[wUNK_START_1]
 	rst $00
 
-;; TODO: These are all functions?
 dw .jump01,.jump02,.jump03
 dw .jump04,.jump05,.jump06
 dw .jump07,.jump08,.jump09

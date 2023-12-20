@@ -1,17 +1,24 @@
 
 SECTION "int_res", ROM0[$11DE]
 
-; Manipulates interrupts then falls into lcd_off
+; `$11DE | Bank:0`
+;
+; Discards interrupts and turns all off except STAT, then turns off LCD.
 int_res:
-	; Reset all interrupts
+	; Discard all interrupts
 	xor a
 	ldh [rIF],a
 
-	; Enable Keep sSTAT enabled if it already was
+	; Keep STAT enabled if it already was
 	ldh a,[rIE]
 	and IEF_UNUSED | IEF_STAT
 	ldh [rIE],a
 
+	; Fall into lcd_off
+
+
+; `$11E7 | Bank:0`
+;
 ; Waits until VBlank and turns off LCD
 lcd_off:
 	; Return if LCD is already off
@@ -19,8 +26,7 @@ lcd_off:
 	bit 7,[hl]
 	ret z
 
-.loop:
-	; Loop until the VBlank
+.loop: ; Loop until the VBlank
 	ldh a,[rLY]
 	cp 145
 	jr nz,.loop

@@ -1,8 +1,11 @@
 
 SECTION "1024", ROM0[$1024]
 
+; `$1024 | bank:0`
+;
 ; Detects if the game is in a SGB
-; * carry flag - true
+;
+; Returns bool in carry
 check_sgb:
 	; sgb_commands: 2-Players
 	ld a,sgb_command_multitwo

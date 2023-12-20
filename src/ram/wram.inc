@@ -36,8 +36,14 @@ empty_5:: ds $0003
 
 ; Set to $FF in start
 wUNK_START_6:: db ; $C81B
-doWait:: db ; $C81C
-IsGBC:: db ; $C81D
+; `$C81C` - bool
+;
+; If true, removes loops
+doWait:: db
+; `$C81D` - bool
+;
+; True if GBC or equivalent
+IsGBC:: db
 
 
 empty_6:: ds $0007
@@ -139,9 +145,14 @@ wUNK_036E_2:: db ; $C886
 empty_16:: ds 3
 
 
-; Four bytes set to 0
-; lowest used in FUN_030F
-wUNK_START_1:: ds 4 ; $C88A
+; `$C88A` - ???
+;
+; Used for jump table in FUN_030F. That clamps it to 0->13, otherwise it would overflow.
+wUNK_START_1:: db
+; $C88B - byte
+;
+; Used for jump table in FUN_21_4009
+wUNK_START_1_2:: ds 3
 
 ; Set to 0 with second group in init, loaded to test for jump
 wUNK_START_15:: db ; $C88E
@@ -236,6 +247,9 @@ wUNK_START_24:: db ; $DA78
 empty_26:: ds 2
 
 
+; $DA7B - fn ptr
+;
+; Set to the return address
 wUNK_21_4009_1:: ds 2 ; $DA7B
 
 

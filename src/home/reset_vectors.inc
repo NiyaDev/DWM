@@ -1,7 +1,7 @@
 
 SECTION "Reset Vectors", ROM0[$0000]
 
-;; Use Jump table located at return address
+; Use Jump table located at return address
 RST00:
 	pop hl
 	add a
@@ -10,15 +10,15 @@ RST00:
 	ld a,0
 	adc h
 	ld h,a
-;; Jumps to function pointed to by HL
+; Jumps to function pointed to by HL
 RST08:
 	ld a,[hl+]
 	ld h,[hl]
 	ld l,a
 	jp hl
 
-;; Alternate version of RST08 that
-;; just returns after getting pointer
+; Alternate version of RST08 that
+; just returns after getting pointer
 ALT08:
 	ld a,[hl+]
 	ld h,[hl]

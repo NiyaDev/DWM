@@ -259,9 +259,12 @@ include "src/bank0/check_sgb.inc" ; 1024
 include "src/bank0/wait.inc" ; 10CF
 include "src/bank0/FUN_10E5.inc" ; 10E5
 
-include "src/bank0/sgb_copy_border.inc" ; 113E 
+include "src/bank0/sgb_copy_border.inc" ; 113E
 
-include "src/bank0/int_res.inc" ; 11DE
+include "src/bank0/FUN_11BC.inc" ; 11BC->11CA
+include "src/bank0/FUN_11CB.inc" ; 11CB->11DD
+include "src/bank0/int_res.inc"  ; 11DE->11FA
+include "src/bank0/FUN_11FB.inc" ; 11FB->1214
 
 include "src/bank0/FUN_1264.inc" ; 1264
 

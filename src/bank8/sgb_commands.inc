@@ -1,6 +1,8 @@
 
 SECTION "4015", ROMX[$4015], BANK[8]
 
+; `$4015 | Bank8`
+;
 ; Sends commands to SGB
 sgb_commands:
 	; Skip if waiting off

@@ -1,7 +1,7 @@
 
 SECTION "030F", ROM0[$030F]
 
-; $030F
+; `$030F | Bank:0`
 ;
 ; TODO Gotta name this
 ;

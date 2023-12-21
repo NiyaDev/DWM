@@ -12,8 +12,10 @@ wUNK_START_19:: db ; $C741
 empty_2:: ds $0032
 
 
+; `$C774` - byte
+;
 ; SGB Command
-wUNK_START_7:: db ; $C774
+wUNK_START_7:: db
 
 
 empty_3:: ds 2
@@ -26,9 +28,10 @@ wUNK_8_4015_1:: db ; $C777
 empty_4:: ds $009F
 
 
-; Saved to
-; Might be a short
-wUNK_21_404F_1:: db ; $C817
+; `$C817` - ???
+;
+; Might be a word
+wUNK_21_404F_1:: db
 
 
 empty_5:: ds $0003
@@ -38,7 +41,9 @@ empty_5:: ds $0003
 wUNK_START_6:: db ; $C81B
 ; `$C81C` - bool
 ;
-; If true, removes loops
+; If true, removes loops.
+;
+; Usually used in conjunction with SGB commands.
 doWait:: db
 ; `$C81D` - bool
 ;
@@ -129,9 +134,12 @@ wUNK_START_8:: db ; $C86A
 empty_14:: db ; $C86B
 
 
-; Loaded for testing for func call
-; Checked if 0 in FUN_036E
-wUNK_START_26:: db ; $C86C
+; `$C86C` - ???
+;
+; Loaded for testing for func call.
+;
+; Checked if 0 in FUN_036E and FUN_11CB.
+wUNK_START_26:: db
 wUNK_21_404F_10:: db ; $C86D
 
 
@@ -145,19 +153,30 @@ wUNK_036E_2:: db ; $C886
 empty_16:: ds 3
 
 
-; `$C88A` - ???
+; `$C88A` - byte
 ;
-; Used for jump table in FUN_030F. That clamps it to 0->13, otherwise it would overflow.
+; Used for jump table in FUN_030F. That clamps it to 0->12, otherwise it would overflow.
 wUNK_START_1:: db
-; $C88B - byte
+; `$C88B` - byte
 ;
-; Used for jump table in FUN_21_4009
-wUNK_START_1_2:: ds 3
-
+; Used for jump table in FUN_21_4009. That clamps it to 0->3
+wUNK_START_1_2:: db
+; `$C88C` - ???
+;
+; 
+wUNK_START_1_3:: db
+; `$C88D` - ???
+;
+; 
+wUNK_START_1_4:: db
+; `$C88E` - ???
+;
 ; Set to 0 with second group in init, loaded to test for jump
-wUNK_START_15:: db ; $C88E
+wUNK_START_15:: db
+; `$C88F` - ???
+;
 ; Set to 0 with second group in init
-wUNK_START_16:: db ; $C88F
+wUNK_START_16:: db
 
 
 empty_18:: ds 2
@@ -179,9 +198,12 @@ wUNK_13EF_1:: ds 3 ; $C89B
 ; [1] to $D2
 ; [2] to $E2
 wUNK_13EF_2:: ds 3 ; $C89E
+; `$C8A1` - byte
+;
 ; Bit 7 reset along with rLCDC (OFF)
+;
 ; Set to the same as rLCDC in FUN_10E5
-wUNK_11E7_1:: db ; $C8A1
+wUNK_11E7_1:: db
 ; Set to 0 with second group in init
 ; Checked if bit 0 is 1 and is reset at end in FUN_036E
 wUNK_START_20:: db ; $C8A2

@@ -1,6 +1,8 @@
 
 SECTION "3331", ROM0[$3331]
 
+; `$3331 | Bank:0`
+;
 ; Initiailizes audio
 audio_init:
 	; FUN_336D(0,0)

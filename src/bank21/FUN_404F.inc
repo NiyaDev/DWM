@@ -7,7 +7,6 @@ SECTION "404F", ROMX[$404F], BANK[21]
 ;
 ; A - 
 FUN_21_404F:
-
 	; Saves input a into two places
 	ld hl,wUNK_21_404F_1
 	ld [hl],a

@@ -37,8 +37,10 @@ wUNK_21_404F_1:: db
 empty_5:: ds $0003
 
 
-; Set to $FF in start
-wUNK_START_6:: db ; $C81B
+; `$C818` - ???
+;
+; Set to $FF in start only when in SGB mode.
+wUNK_START_6:: db
 ; `$C81C` - bool
 ;
 ; If true, removes loops.
@@ -54,9 +56,12 @@ IsGBC:: db
 empty_6:: ds $0007
 
 
-; Set to 0 with others in init
-; Checked if not 0 in FUN_036E
-wUNK_START_9:: db ; $C825
+; `$C825` - ???
+;
+; Set to 0 at the start of main loop.
+;
+; Checked if not 0 in FUN_036E.
+wUNK_START_9:: db
 
 
 empty_7:: db ; $C826
@@ -70,8 +75,13 @@ wUNK_21_4009_3:: db ; $C827
 empty_8:: db ; $C828
 
 
+; `$C829` - ???
+;
 ; Set to 0 with others in init
-wUNK_START_10:: db ; $C829
+wUNK_START_10:: db
+; `$C82A` - ???
+;
+; Set to 0 with others in init
 wUNK_START_11:: db ; $C82A
 
 
@@ -91,21 +101,31 @@ wUNK_036E_1:: db ; $C842
 empty_11:: ds 13
 
 
+; `$C850` - ???
+;
 ; Loaded to test for jump
 ; Set to 0 in FUN_1660
-wUNK_START_27:: db ; $C850
-	; Set to $07
-wUNK_1660_1:: db ; $C851
-	; Set to $1F
-wUNK_1660_2:: db ; $C852
-	; Set to unk_13EF_1
-wUNK_1660_3:: db ; $C853
-	; Set to unk_13EF_2
-wUNK_1660_4:: db ; $C854
-	; Set to unk_13EF_3
-wUNK_1660_5:: db ; $C855
-	; Set to 0
-wUNK_1660_6:: db ; $C856
+wUNK_START_27:: db
+; `$C851` - ???
+;
+; Set to $07 in FUN_1660.
+wUNK_1660_1:: db
+; `$C852` - ???
+;
+; Set to $1F in FUN_1660.
+wUNK_1660_2:: db
+; `$C853` - ???[3]
+;
+; [0] Set to unk_13EF_1[0].
+;
+; [1] Set to unk_13EF_1[0].
+;
+; [2] Set to unk_13EF_1[0].
+wUNK_1660_3:: db
+; `$C856` - ???[5]
+;
+; [0->4] Set to 0.
+wUNK_1660_6:: db
 	; Set to 0
 wUNK_1660_7:: db ; $C857
 	; Set to 0
@@ -126,9 +146,12 @@ wUNK_21_404F_7:: db ; $C866
 empty_13:: ds 3
 
 
-; Set to 0 with others in init
-; Set to 0 in FUN_1660
-wUNK_START_8:: db ; $C86A
+; `$C86A` - ???
+;
+; Set to 0 at the start of main loop.
+;
+; Set to 0 in FUN_1660.
+wUNK_START_8:: db
 
 
 empty_14:: db ; $C86B
@@ -190,12 +213,21 @@ empty_19:: ds 6
 
 ; Calculated and then saved as big endian
 wUNK_12D0_1:: ds 2 ; $C899
-; [0] to $D2 and copied to unk_13EF_4
-; [1] to $D2 and copied to unk_13EF_5
-; [2] to $E2 and copied to unk_13EF_6
-wUNK_13EF_1:: ds 3 ; $C89B
+; `$C89B` - ???
+;
+; [0] to $D2.
+; Copied into wUNK_1660_3[0->2]
+;
+; [1] to $D2.
+;
+; [2] to $E2.
+wUNK_13EF_1:: ds 3
+; `$C89B` - ???
+;
 ; [0] to $D2
+;
 ; [1] to $D2
+;
 ; [2] to $E2
 wUNK_13EF_2:: ds 3 ; $C89E
 ; `$C8A1` - byte
@@ -224,6 +256,8 @@ wUNK_START_25:: ds 4 ; $C8B1
 empty_21:: ds 2
 
 
+; `$C8B7` - ???
+;
 ; Set to $FFFF at init
 wUNK_START_4:: ds 2 ; $C8B7
 ; Set to 0 with second group in init
@@ -234,10 +268,16 @@ wUNK_START_23:: db ; $C8B9
 empty_22:: ds 13
 
 
-; Set to 0
-wUNK_START_5:: db ; $C8C7
+; `$C8C7` - ???
+;
+; Set to 0 in start
+wUNK_START_5:: db
+; `$C8C8` - ???
+;
 ; Set to 0 with others in init
 wUNK_START_12:: db ; $C8C8
+; `$C8C9` - ???
+;
 ; Set to 0 with others in init
 wUNK_START_13:: db ; $C8C9
 
@@ -254,8 +294,10 @@ wUNK_21_4009_2:: ds 8 ; $C8DA
 empty_24:: ds 12
 
 
+; `$C8EE` - ???
+;
 ; Set to 4 at init
-wUNK_START_2:: db ; $C8EE
+wUNK_START_2:: db
 
 
 empty_25:: ds 4489
@@ -306,5 +348,7 @@ wUNK_3331_3:: db ; $DE29
 empty_30:: ds 228
 
 
+; `$DF0E` - ???
+;
 ; Set to 0 with others in init
 wUNK_START_14:: db ; $DF0E

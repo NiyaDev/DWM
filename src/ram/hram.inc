@@ -33,7 +33,10 @@ hUNK_21_404F_4:: db ; $FFBB
 empty_h4:: ds 15
 
 
-hUNK_1417:: db ; $FFCB
+; `$FFCB` - ???
+;
+; Set to 0 in FUN_1417
+hUNK_1417:: db
 
 
 empty_h5:: ds 7

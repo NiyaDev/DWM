@@ -5,7 +5,6 @@ SECTION "4009", ROMX[$4009], BANK[21]
 ; 
 ; Clears and sets a bunch of memory and then uses jumptable
 FUN_21_4009:
-
 	; Store return address in unk_21_4009_1
 	ld hl,sp+0
 	ld a,l
@@ -48,6 +47,7 @@ FUN_21_4009:
 	rst $00
 
 
+; This function uses A, which when this function is used contains the low half of the address of the function, $4F
 dw FUN_21_404F
 dw $40A0
 dw $4172

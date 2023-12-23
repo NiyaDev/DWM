@@ -1,7 +1,9 @@
 
 SECTION "336D", ROM0[$336D]
 
-; Sets some variables
+; `$336D | Bank:0`
+;
+; Sets some variables.
 FUN_336D:
 	ld a,b
 	ld [wUNK_336D_1],a

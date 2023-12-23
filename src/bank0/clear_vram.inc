@@ -1,6 +1,8 @@
 
 SECTION "12A5", ROM0[$12A5]
 
+; `$12A5 | Bank:0`
+;
 ; Clear banked VRAM
 clear_vram:
 	; Clear VRAM tilemap 0

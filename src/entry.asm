@@ -123,7 +123,7 @@ Start:
 	ldh [rRP],a
 
 .check_for_sgb:
-	; If returns true, go through SGB commands
+	; If running on SGB, Send commands
 	call check_sgb
 	jr c,.sgb_commands
 
@@ -173,9 +173,11 @@ Start:
 	; SGB Request: Disable built in Palettes
 	SGBCommand sgb_command_iconenable
 
+	; Turn wait on
 	ld a,1
 	ld [doWait],a
 
+	; Set value
 	ld a,$FF
 	ld [wUNK_START_6],a
 
@@ -186,13 +188,14 @@ Start:
 	call FUN_140B
 	call FUN_1660
 
+	; Clear values.
 	xor a
 	ld [wUNK_START_8],a
 	ld [wUNK_START_9],a
-	ld [wUNK_START_10],a
-	ld [wUNK_START_11],a
-	ld [wUNK_START_12],a
-	ld [wUNK_START_13],a
+	ld [wUNK_START_10],a ; | 
+	ld [wUNK_START_11],a ; | paired
+	ld [wUNK_START_12],a ;  |
+	ld [wUNK_START_13],a ;  | paired
 	ld [wUNK_START_14],a
 	call FUN_030F
 

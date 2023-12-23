@@ -5,97 +5,96 @@ SECTION "030F", ROM0[$030F]
 ;
 ; TODO Gotta name this
 ;
-; Jump table:
+; Jump table using wUNK_START_1:
 ;
-; ` 1: Bank 21 / $4009`
-; ` 2: Bank  1 / $401D`
-; ` 3: Bank 80 / $5DC9`
+; ` 0: Bank 21 / $4009`
+; ` 1: Bank  1 / $401D`
+; ` 2: Bank 80 / $5DC9`
 ;
-; ` 4: Bank  2 / $4E9F`
-; ` 5: Bank 95 / $4017`
-; ` 6: Bank 95 / $5BB7`
+; ` 3: Bank  2 / $4E9F`
+; ` 4: Bank 95 / $4017`
+; ` 5: Bank 95 / $5BB7`
 ;
-; ` 7: Bank 24 / $400B`
-; ` 8: Bank 85 / $4936`
-; ` 9: Bank 89 / $4013`
+; ` 6: Bank 24 / $400B`
+; ` 7: Bank 85 / $4936`
+; ` 8: Bank 89 / $4013`
 ;
-; `10: Bank 89 / $458F`
-; `11: Bank 89 / $4824`
-; `12: Bank 86 / $4916`
+; ` 9: Bank 89 / $458F`
+; `10: Bank 89 / $4824`
+; `11: Bank 86 / $4916`
 ;
-; `13: Bank 86 / $403F`
-;
+; `12: Bank 86 / $403F`
 FUN_030F:
 	ld a,[wUNK_START_1]
 	rst $00
 
-dw .jump01,.jump02,.jump03
-dw .jump04,.jump05,.jump06
-dw .jump07,.jump08,.jump09
-dw .jump10,.jump11,.jump12
-dw .jump13
+dw .jump00,.jump01,.jump02
+dw .jump03,.jump04,.jump05
+dw .jump06,.jump07,.jump08
+dw .jump09,.jump10,.jump11
+dw .jump12
 
-.jump01:
-	ld hl,jump_21_4009
+.jump00:
+	ld hl,$1500
 	rst $10
 	ret
 
-.jump02:
+.jump01:
 	ld hl,jump_1_401D
 	rst $10
 	ret
 
-.jump03:
+.jump02:
 	ld hl,jump_80_5DC9
 	rst $10
 	ret
 
-.jump04:
+.jump03:
 	ld hl,jump_2_4E9F
 	rst $10
 	ret
 
-.jump05:
+.jump04:
 	ld hl,jump_95_4017
 	rst $10
 	ret
 
-.jump06:
+.jump05:
 	ld hl,jump_95_5BB7
 	rst $10
 	ret
 
-.jump07:
+.jump06:
 	ld hl,jump_24_400B
 	rst $10
 	ret
 
-.jump08:
+.jump07:
 	ld hl,jump_85_4936
 	rst $10
 	ret
 
-.jump09:
+.jump08:
 	ld hl,jump_89_4013
 	rst $10
 	ret
 
-.jump10:
+.jump09:
 	ld hl,jump_89_458F
 	rst $10
 	ret
 
-.jump11:
+.jump10:
 	ld hl,jump_89_4824
 	rst $10
 	ret
 
-.jump12:
+.jump11:
 	ld hl,jump_86_4916
 	rst $10
 	ret
 
-.jump13:
+.jump12:
 	ld hl,jump_86_403F
 	rst $10
 	ret

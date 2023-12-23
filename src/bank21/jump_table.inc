@@ -1,5 +1,4 @@
 
-
 SECTION "BANK21", ROMX[$4000], BANK[21]
 
 db 21

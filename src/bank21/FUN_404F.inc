@@ -13,8 +13,7 @@ FUN_21_404F:
 	inc hl
 	ld [hl],a
 
-	; Calls FUN_8_422C
-	; TODO
+	; Copy data
 	ld hl,jump_8_422C
 	rst $10
 
@@ -24,6 +23,7 @@ FUN_21_404F:
 	rst $10
 
 	; Calls FUN_1688
+	; TODO
 	ld a,$FC
 	call FUN_1688
 
@@ -53,9 +53,10 @@ FUN_21_404F:
 	ld [wUNK_21_404F_10],a
 	ld [wUNK_21_404F_9],a
 
-	; Sets a value to 3
-	ld a,3
-	ld [wUNK_11E7_1],a
+	; Turn on OBJs and BGs
+	ld a,LCDCF_OBJON & LCDCF_BGON
+	ld [lcdcFlags],a
 
-	ld a,1
+	; Jumps to FUN_11CB
+	ld a,IEF_VBLANK
 	jp FUN_11CB

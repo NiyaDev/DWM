@@ -24,8 +24,27 @@ empty_3:: ds 2
 ; Appears to be a SGB Command in memory
 wUNK_8_4015_1:: db ; $C777
 
+ds $0060
 
-empty_4:: ds $009F
+; `$C7D7` - ??[8]
+;
+; Copied to using FUN_8_426A in FUN_8_422C.
+wUNK_8_422C_5:: ds 8
+; `$C7DF` - ??[8]
+;
+; Copied to using FUN_8_426A in FUN_8_422C.
+wUNK_8_422C_6:: ds 8
+; `$C7E7` - ??[8]
+;
+; Copied to using FUN_8_426A in FUN_8_422C.
+wUNK_8_422C_7:: ds 8
+; `$C7EF` - ??[8]
+;
+; Copied to using FUN_8_426A in FUN_8_422C.
+wUNK_8_422C_8:: ds 8
+
+
+ds $001F
 
 
 ; `$C817` - ???
@@ -51,9 +70,13 @@ doWait:: db
 ;
 ; True if GBC or equivalent
 IsGBC:: db
+; `$C81E` - bool
+;
+; 
+wUNK_95_441C_1:: db
 
 
-empty_6:: ds $0007
+empty_6:: ds $0006
 
 
 ; `$C825` - ???
@@ -134,16 +157,54 @@ wUNK_1660_8:: db ; $C858
 wUNK_1660_9:: db ; $C859
 
 
-empty_12:: ds 9
+ds 1
 
 
-wUNK_21_404F_8:: db ; $C863
-wUNK_21_404F_9:: db ; $C864
-wUNK_21_404F_6:: db ; $C865
-wUNK_21_404F_7:: db ; $C866
+; $C85B->$C862 seem to be pointers
+
+; `$C85B` - ptr offset
+;
+; (x*8 + $447E)
+;
+; Used in FUN_8_422C
+wUNK_8_422C_1:: dw
+; `$C85E` - ptr offset
+;
+; (x*8 + $447E)
+;
+; Used in FUN_8_422C
+wUNK_8_422C_2:: dw
+; `$C860` - ptr offset
+;
+; (x*8 + $447E)
+;
+; Used in FUN_8_422C
+wUNK_8_422C_3:: dw
+; `$C862` - ptr offset
+;
+; (x*8 + $447E)
+;
+; Used in FUN_8_422C
+wUNK_8_422C_4:: dw
+; `$C863` - ???
+;
+; Set to 0 in FUN_404F.
+wUNK_21_404F_8:: db
+; `$C864` - ???
+;
+; Set to 0 in FUN_404F.
+wUNK_21_404F_9:: db
+; `$C865` - ???
+;
+; Set to 0 in FUN_404F.
+wUNK_21_404F_6:: db
+; `$C866` - ???
+;
+; Set to 0 in FUN_404F.
+wUNK_21_404F_7:: db
 
 
-empty_13:: ds 3
+ds 5
 
 
 ; `$C86A` - ???
@@ -154,7 +215,7 @@ empty_13:: ds 3
 wUNK_START_8:: db
 
 
-empty_14:: db ; $C86B
+db ; $C86B
 
 
 ; `$C86C` - ???
@@ -162,8 +223,13 @@ empty_14:: db ; $C86B
 ; Loaded for testing for func call.
 ;
 ; Checked if 0 in FUN_036E and FUN_11CB.
+;
+; Set to 0 in FUN_404F.
 wUNK_START_26:: db
-wUNK_21_404F_10:: db ; $C86D
+; `$C86D` - ???
+;
+; Set to 0 in FUN_404F.
+wUNK_21_404F_10:: db
 
 
 empty_15:: ds 24
@@ -205,7 +271,10 @@ wUNK_START_16:: db
 empty_18:: ds 2
 
 
-wUNK_21_404F_5:: db ; $C892
+; `$C892` - ???
+;
+; Set to 0 in FUN_404F
+wUNK_21_404F_5:: db
 
 
 empty_19:: ds 6
@@ -232,17 +301,18 @@ wUNK_13EF_1:: ds 3
 wUNK_13EF_2:: ds 3 ; $C89E
 ; `$C8A1` - byte
 ;
-; Bit 7 reset along with rLCDC (OFF)
-;
-; Set to the same as rLCDC in FUN_10E5
-wUNK_11E7_1:: db
+; Contains LCD control flags and is copied to rLCDC.
+lcdcFlags:: db
 ; Set to 0 with second group in init
 ; Checked if bit 0 is 1 and is reset at end in FUN_036E
 wUNK_START_20:: db ; $C8A2
 ; Set to 0 with second group in init
 wUNK_START_17:: db ; $C8A3
-; Set to 0 with second group in init
-; Incremented in FUN_036E
+; `$C8A4` - ???(Word?)
+;
+; Set to 0 with second group in init.
+;
+; Incremented in FUN_036E.
 wUNK_START_21:: ds 2 ; $C8A4
 
 

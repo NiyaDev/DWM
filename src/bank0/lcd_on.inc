@@ -4,14 +4,14 @@ SECTION "11FB", ROM0[$11FB]
 ; `$11FB | Bank:0`
 ;
 ; Turns on LCD and if in SGB mode waits and cancels the mask.
-FUN_11FB:
-	; Turn on LCD
-	ld hl,wUNK_11E7_1
+lcd_on:
+	; Turn on LCD and apply other controls
+	ld hl,lcdcFlags
 	set LCDCB_ON,[hl]
 	ld a,[hl]
 	ldh [rLCDC],a
 
-	; Wait
+	; Check if SGB
 	ld a,[doWait]
 	or a
 	ret z

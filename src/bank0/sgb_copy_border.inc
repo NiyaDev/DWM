@@ -92,7 +92,7 @@ sgb_copy_border:
 	; Turn on LCD and BG
 	ld a,LCDCF_ON | LCDCF_BGON
 	ldh [rLCDC],a
-	ld [wUNK_11E7_1],a
+	ld [lcdcFlags],a
 
 	; Wait and send SGB command
 	ld bc,5

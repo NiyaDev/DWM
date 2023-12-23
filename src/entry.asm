@@ -267,7 +267,10 @@ include "src/bank0/sgb_copy_border.inc" ; 113E
 include "src/bank0/FUN_11BC.inc" ; 11BC->11CA
 include "src/bank0/FUN_11CB.inc" ; 11CB->11DD
 include "src/bank0/int_res.inc"  ; 11DE->11FA
-include "src/bank0/FUN_11FB.inc" ; 11FB->1214
+include "src/bank0/lcd_on.inc"   ; 11FB->1214
+
+include "src/bank0/FUN_1227.inc" ; 1227->122E
+include "src/bank0/FUN_122F.inc" ; 122F->123F
 
 include "src/bank0/reset_STAT.inc" ; 1264
 
@@ -294,14 +297,29 @@ db $AF,$EA,$29,$DE,$C9,$3E,$04,$EA
 db $29,$DE,$AF,$EA,$1D,$DE,$C9 ; TODO: This is a function
 include "src/bank0/FUN_336D.inc" ; 336D
 
+
 ;; BANK 8
-include "src/bank8/jump_table.inc"
-include "src/bank8/sgb_commands.inc"
+include "src/bank8/jump_table.inc"   ; 4001->4014
+include "src/bank8/sgb_commands.inc" ; 4015->4068
+
+include "src/bank8/FUN_422C.inc" ; 422C->4269
+include "src/bank8/FUN_426A.inc" ; 426A->427D
+
+SECTION "DATA_8_447E", ROMX[$447E], BANK[8]
+DATA_8_447E: incbin "src/bank8/DATA_8_447E.bin"
+DATA_8_449E: incbin "src/bank8/DATA_8_449E.bin"
+DATA_8_44A5: incbin "src/bank8/DATA_8_44A5.bin"
+
 
 ;; BANK 21
 include "src/bank21/jump_table.inc"
 include "src/bank21/FUN_4009.inc"
 include "src/bank21/FUN_404F.inc"
+
+
+;; BANK 95
+include "src/bank95/jump_table.inc"
+include "src/bank95/FUN_441C.inc"
 
 
 ;; BANK123

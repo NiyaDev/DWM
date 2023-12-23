@@ -269,7 +269,7 @@ include "src/bank0/FUN_11CB.inc" ; 11CB->11DD
 include "src/bank0/int_res.inc"  ; 11DE->11FA
 include "src/bank0/FUN_11FB.inc" ; 11FB->1214
 
-include "src/bank0/FUN_1264.inc" ; 1264
+include "src/bank0/reset_STAT.inc" ; 1264
 
 include "src/bank0/clear_memory.inc" ; 1288
 include "src/bank0/clear_vram.inc" ; 12A5

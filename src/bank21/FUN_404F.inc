@@ -14,10 +14,12 @@ FUN_21_404F:
 	ld [hl],a
 
 	; Calls FUN_8_422C
+	; TODO
 	ld hl,jump_8_422C
 	rst $10
 
 	; Calls FUN_95_441C
+	; TODO
 	ld hl,jump_95_441C
 	rst $10
 

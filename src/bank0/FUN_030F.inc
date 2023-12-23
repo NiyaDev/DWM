@@ -35,7 +35,7 @@ dw .jump09,.jump10,.jump11
 dw .jump12
 
 .jump00:
-	ld hl,$1500
+	ld hl,jump_21_4009
 	rst $10
 	ret
 

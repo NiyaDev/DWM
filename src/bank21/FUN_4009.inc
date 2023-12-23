@@ -37,8 +37,10 @@ FUN_21_4009:
 	ld bc,8
 	call mem_fill
 
-	call FUN_1264
+	; Reset LCDC status
+	call reset_STAT
 
+	; Clear value
 	xor a
 	ld [wUNK_START_5],a
 
@@ -47,7 +49,7 @@ FUN_21_4009:
 	rst $00
 
 
-; This function uses A, which when this function is used contains the low half of the address of the function, $4F
+; This function uses A, which when this function is used contains the low half of the address of the function; $4F
 dw FUN_21_404F
 dw $40A0
 dw $4172

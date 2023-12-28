@@ -1,7 +1,11 @@
 
 SECTION "1627", ROM0[$1627]
 
-; Sets ROM and SRAM banks to d, then loads data using the offset in e and the values in h and l
+; `$1627 | Bank:0`
+;
+; Sets ROM and SRAM banks to d,
+;
+; then loads data using the offset in e and the values in h and l
 FUN_1627:
 	ld a,d
 	ld [rROMB0],a

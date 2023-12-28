@@ -1,6 +1,8 @@
 
 SECTION "14E1", ROM0[$14E1]
 
+; `$14E1 | Bank:0`
+;
 ; 
 FUN_14E1:
 	ld a,[rRAMB]

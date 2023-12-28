@@ -252,11 +252,11 @@ wUNK_START_1:: db
 wUNK_START_1_2:: db
 ; `$C88C` - ???
 ;
-; 
+; Used for jumptable at FUN_95_441C
 wUNK_START_1_3:: db
 ; `$C88D` - ???
 ;
-; 
+; Used for jumptable at $442E within FUN_95_441C
 wUNK_START_1_4:: db
 ; `$C88E` - ???
 ;
@@ -371,11 +371,14 @@ wUNK_START_2:: db
 
 
 empty_25:: ds 4489
+; `$DA78` - ???
+;
 ; WRAM0 MODE
-
-; Set to 0 with second group in init
+;
+; Set to 0 with second group in init.
+;
 ; Causes lock up if not 0, inc, then saved in FUN_14CF
-wUNK_START_24:: db ; $DA78
+wUNK_START_24:: db
 
 
 empty_26:: ds 2

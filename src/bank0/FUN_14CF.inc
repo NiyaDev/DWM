@@ -1,7 +1,9 @@
 
 SECTION "14CF", ROM0[$14CF]
 
-; 
+; `$14CF | Bank:0`
+;
+; Locks up if unk_start_24
 FUN_14CF:
 	; Locks up game if unk_start_24 != 0
 	ld a,[wUNK_START_24]

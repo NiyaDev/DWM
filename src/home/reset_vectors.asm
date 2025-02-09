@@ -2,6 +2,7 @@
 SECTION "Reset Vectors", ROM0[$0000]
 
 ; Use Jump table located at return address
+; with offset in A
 RST00:
 	pop hl
 	add a
@@ -56,7 +57,7 @@ RST10:
 	ret
 db $FF
 
-; Increments data at D + 1.
+; Increments data at DE + 1.
 RST38:
 	ld e,1
 	ld a,[de]

@@ -1,12 +1,10 @@
 
 SECTION "140B", ROM0[$140B]
 
-; `$140B | Bank:0`
-;
-; Clears $FFB7->$FFBE
 FUN_140B:
+; Clears $FFB7->$FFBE
 	xor a
-	ld hl,hUNK_140B
+	ld hl,hSCX
 	call .input
 
 ; Sets four bytes to input

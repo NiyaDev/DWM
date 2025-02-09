@@ -1,19 +1,19 @@
 
-; Definitions
+;; Definitions
 include "src/includes/hardware.inc"
 include "src/constants.inc"
 include "src/macros.inc"
 include "src/todo.inc"
 
 ;; RAM
-include "src/ram/hram.inc"
+include "src/ram/hram.asm"
 include "src/ram/sram.inc"
 include "src/ram/vram.inc"
-include "src/ram/wram.inc"
+include "src/ram/wram.asm"
 
-; Home
-include "src/home/reset_vectors.inc"
-include "src/home/interrupts.inc"
+;; Home
+include "src/home/reset_vectors.asm"
+include "src/home/interrupts.asm"
 include "src/home/copy_dma.inc"
 
 db $13,$cd,$90,$12,$cd,$00,$40,$cd
@@ -254,7 +254,9 @@ Start:
 ;; Functions
 ;; BANK0
 include "src/bank0/FUN_030F.inc" ; 030F
-include "src/bank0/FUN_036E.inc" ; 036E
+include "src/bank0/FUN_036E.asm" ; 036E
+
+include "src/bank0/FUN_05AD.asm" ; 05AD
 
 include "src/bank0/wait_7000.inc" ; 1013
 include "src/bank0/check_sgb.inc" ; 1024
@@ -270,7 +272,7 @@ include "src/bank0/int_res.inc"  ; 11DE->11FA
 include "src/bank0/lcd_on.inc"   ; 11FB->1214
 
 include "src/bank0/FUN_1227.inc" ; 1227->122E
-include "src/bank0/FUN_122F.inc" ; 122F->123F
+include "src/bank0/FUN_122F.asm" ; 122F->123F
 
 include "src/bank0/reset_STAT.inc" ; 1264
 
@@ -281,8 +283,10 @@ include "src/bank0/FUN_12D0.inc" ; 12D0
 
 include "src/bank0/FUN_13EF.inc" ; 13EF
 
-include "src/bank0/FUN_140B.inc" ; 140B
+include "src/bank0/FUN_140B.asm" ; 140B
 include "src/bank0/FUN_1417.inc" ; 1417
+
+include "src/bank0/FUN_143C.asm" ; 143C
 
 include "src/bank0/FUN_14CF.inc" ; 14CF
 include "src/bank0/FUN_14E1.inc" ; 14E1
@@ -314,7 +318,7 @@ DATA_8_44A5: incbin "src/bank8/DATA_8_44A5.bin"
 ;; BANK 21
 include "src/bank21/jump_table.inc"
 include "src/bank21/FUN_4009.inc"
-include "src/bank21/FUN_404F.inc"
+include "src/bank21/FUN_404F.asm"
 
 
 ;; BANK 95

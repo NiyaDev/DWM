@@ -1,13 +1,15 @@
 
 SECTION "036E", ROM0[$036E]
 
-; 
-FUN_036E:
+
+FUN_036E::
+;
 	push af
 	push bc
 	push de
 	push hl
 
+; if bit 0 of wUNK_START_20 is false
 	ld hl,wUNK_START_20
 	bit 0,[hl]
 	jp nz,.LAB_045C
@@ -17,21 +19,24 @@ FUN_036E:
 	call _RUNDMA
 	call FUN_05AD
 	call FUN_124C
-	call FUN_122F
+	call copy_scvi
 	call FUN_056E
 	call FUN_1240
 
+; if wUNK_START_26 == 0
 	ld a,[wUNK_START_26]
 	or a
 	jr z,.LAB_039B
 
+; if wUNK_START_23 == 0
 	ld a,[wUNK_START_23]
 	or a
 	call z,FUN_3473
 
 .LAB_039B:
 	ei
-	
+
+; if wUNK_START_26 != 0
 	ld a,[wUNK_START_26]
 	or a
 	jr nz,.LAB_03B3
@@ -39,10 +44,13 @@ FUN_036E:
 	call FUN_12EE
 	call FUN_1364
 
+; wUNK_START_23++
 	ld hl,wUNK_START_23
 	inc [hl]
+
 	call FUN_3473
 
+; wUNK_START_23 = 0
 	xor a
 	ld [wUNK_START_23],a
 
@@ -50,16 +58,19 @@ FUN_036E:
 	call FUN_1BB1
 	call FUN_046B
 
+; if wUNK_START_26 != 0
 	ld a,[wUNK_START_26]
 	or a
 	jr nz,.LAB_03D9
 
+; if wUNK_START_9 != 0
 	ld a,[wUNK_START_9]
 	or a
 	call nz,FUN_0618
 
 	call FUN_17EC
 
+; wUNK_START_21++
 	ld a,[wUNK_START_21]
 	add 1
 	ld [wUNK_START_21],a
@@ -68,16 +79,19 @@ FUN_036E:
 	ld [wUNK_START_21+1],a
 
 .LAB_03D9:
+; if wUNK_036E_1 != 15
 	ld a,[wUNK_036E_1]
 	and $0F
 	cp $0F
 	jr nz,.LAB_03E9
 
+; if wUNK_START_26 == 0
 	ld a,[wUNK_START_26]
 	or a
 	jp z,Start.LAB_015A
 
 .LAB_03E9:
+; if wUNK_START_26 != 0
 	ld a,[wUNK_START_26]
 	or a
 	jr nz,.LAB_044D
@@ -107,6 +121,7 @@ db $FA,$46,$C8,$CB,$57,$28,$20,$21,$AD,$C8,$FA,$8A,$C8,$22,$FA,$8B,$C8,$22,$FA,$
 .LAB_045C:
 	call FUN_1240
 
+; if wUNK_START_23 != 0
 	ld a,[wUNK_START_23]
 	or a
 	jr nz,.LAB_0468

@@ -21,6 +21,12 @@ dw .jmp6
 	rst $00
 
 dw .jmp0_0, .jmp0_1, .jmp0_2
+.jmp1:
+.jmp2:
+.jmp3:
+.jmp4:
+.jmp5:
+.jmp6:
 
 ; `$4439 | Bank:95`
 ;
@@ -69,3 +75,6 @@ dw .jmp0_0, .jmp0_1, .jmp0_2
 	ld a,0
 	ldh [rVBK],a
 	ret
+
+.jmp0_1:
+.jmp0_2:

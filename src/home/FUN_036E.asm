@@ -1,9 +1,7 @@
 
-SECTION "036E", ROM0[$036E]
-
+SECTION "vblank-func", ROM0[$036E]
 
 FUN_036E::
-;
 	push af
 	push bc
 	push de
@@ -13,7 +11,6 @@ FUN_036E::
 	ld hl,wUNK_START_20
 	bit 0,[hl]
 	jp nz,.LAB_045C
-
 	set 0,[hl]
 
 	call _RUNDMA

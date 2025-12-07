@@ -27,8 +27,8 @@ dma_data:
 	ldh [rDMA],a
 	ld a,40
 
-.LAB_0094: ; Wait 40 loops
+.wait: ; Wait 40 loops
 	dec a
-	jr nz,.LAB_0094
+	jr nz,.wait
 
 	ret

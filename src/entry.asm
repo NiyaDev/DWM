@@ -12,8 +12,7 @@ include "src/ram/vram.inc"
 include "src/ram/wram.asm"
 
 ;; Home
-include "src/home/reset_vectors.asm"
-include "src/home/interrupts.asm"
+include "src/home/header.asm"
 include "src/home/copy_dma.inc"
 
 db $13,$cd,$90,$12,$cd,$00,$40,$cd
@@ -27,8 +26,7 @@ db $4b,$2a,$e0,$47,$2a,$e0,$48,$2a
 db $e0,$49,$7e,$e0,$45,$fa,$c1,$dd
 db $ea,$c0,$dd,$fa,$90,$c9,$e0,$40
 db $fa,$c7,$dd,$b7,$c8,$c3,$14,$12
-db $ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff
-db $ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff
+ds 16, $FF
 
 
 SECTION "Entry", ROM0[$0100]
@@ -254,9 +252,9 @@ Start:
 ;; Functions
 ;; BANK0
 include "src/bank0/FUN_030F.inc" ; 030F
-include "src/bank0/FUN_036E.asm" ; 036E
+include "src/home/FUN_036E.asm" ; 036E
 
-include "src/bank0/FUN_05AD.asm" ; 05AD
+include "src/home/FUN_05AD.asm" ; 05AD
 
 include "src/bank0/wait_7000.inc" ; 1013
 include "src/bank0/check_sgb.inc" ; 1024
@@ -286,7 +284,7 @@ include "src/bank0/FUN_13EF.inc" ; 13EF
 include "src/bank0/FUN_140B.asm" ; 140B
 include "src/bank0/FUN_1417.inc" ; 1417
 
-include "src/bank0/FUN_143C.asm" ; 143C
+include "src/home/FUN_143C.asm" ; 143C
 
 include "src/bank0/FUN_14CF.inc" ; 14CF
 include "src/bank0/FUN_14E1.inc" ; 14E1

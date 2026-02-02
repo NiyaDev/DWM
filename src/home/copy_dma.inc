@@ -2,7 +2,6 @@
 SECTION "copy_dma", ROM0[$0080]
 
 ; `$0080 | Bank:0`
-;
 ; Copy DMA transfer function to HRAM.
 copy_dma:
 	ld c,_HRAMSTART
@@ -20,7 +19,6 @@ copy_dma:
 
 
 ; `$008E | Bank:0`
-;
 ; DMA transfer function
 dma_data:
 	ld a,$C0

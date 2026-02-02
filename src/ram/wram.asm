@@ -81,9 +81,7 @@ empty_6:: ds $0006
 
 
 ; `$C825` - ???
-;
 ; Set to 0 at the start of main loop.
-;
 ; Checked if not 0 in FUN_036E.
 wUNK_START_9:: db
 
@@ -209,9 +207,7 @@ ds 5
 
 
 ; `$C86A` - ???
-;
 ; Set to 0 at the start of main loop.
-;
 ; Set to 0 in FUN_1660.
 wUNK_START_8:: db
 
@@ -295,7 +291,6 @@ wUNK_13EF_1:: ds 3
 ; [2] to $E2
 wUNK_13EF_2:: ds 3 ; $C89E
 ; `$C8A1` - byte
-;
 ; Contains LCD control flags and is copied to rLCDC.
 lcdcFlags:: db
 wUNK_START_20:: db  ; $C8A2

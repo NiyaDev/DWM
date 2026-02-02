@@ -1,6 +1,9 @@
 
 SECTION "vblank-func", ROM0[$036E]
 
+
+; `$036E | Bank:0`
+; DEF
 FUN_036E::
 	push af
 	push bc
@@ -103,7 +106,7 @@ db $FA,$46,$C8,$CB,$57,$28,$20,$21,$AD,$C8,$FA,$8A,$C8,$22,$FA,$8B,$C8,$22,$FA,$
 .LAB_044D:
 	ld hl,wUNK_START_20
 	res 0,[hl]
-.LAB_0452:
+.return:
 	ldh a,[rLY]
 	ld [wUNK_036E_2],a
 
@@ -127,4 +130,4 @@ db $FA,$46,$C8,$CB,$57,$28,$20,$21,$AD,$C8,$FA,$8A,$C8,$22,$FA,$8B,$C8,$22,$FA,$
 
 .LAB_0468:
 	ei
-	jr .LAB_0452
+	jr .return
